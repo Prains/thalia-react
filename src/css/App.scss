@@ -1,0 +1,63 @@
+* {
+  box-sizing: border-box;
+}
+.flex {
+  display: flex !important;
+  opacity: 1;
+}
+.liked {
+  content: url("../images/icon_like.svg");
+}
+.ordered {
+  content: url("../images/icon_basket.svg");
+}
+.selected {
+  opacity: 1 !important;
+  border-bottom: 3px dashed #000000;
+}
+.selected-card {
+  opacity: 1 !important;
+}
+.display {
+  display: none;
+}
+
+.undisplay {
+  display: block !important;
+}
+
+.arrowimg {
+  max-width: 14px;
+  max-height: 9px;
+}
+
+.rotate {
+  transform: rotate(180deg);
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+.title {
+  font-family: "Comfortaa", cursive;
+}
+
+.text {
+  font-family: "Open Sans", sans-serif;
+}
+
+.page {
+  overflow: hidden;
+  min-height: 100vh;
+}
+
+a {
+  text-decoration: none;
+  color: #282828;
+  margin: 0;
+}
+
+.bold {
+  font-weight: 600;
+}
