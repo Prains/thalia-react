@@ -1,9 +1,11 @@
 {
   "files": {
-    "main.css": "/thalia-react/static/css/main.60d95e2c.css",
-    "main.js": "/thalia-react/static/js/main.10eec2ef.js",
+    "main.css": "/thalia-react/static/css/main.4f468187.css",
+    "main.js": "/thalia-react/static/js/main.97f3233c.js",
     "static/media/footer__logo.svg": "/thalia-react/static/media/footer__logo.4301695b7f0a1427966dd78289dfddb8.svg",
+    "static/media/novelties__card1.jpg": "/thalia-react/static/media/novelties__card1.fab5aef5ee974bc9c674.jpg",
     "static/media/mainimg.png": "/thalia-react/static/media/mainimg.fc32fe6f5c7cb5cd99a0.png",
+    "static/media/novelties__card2.jpg": "/thalia-react/static/media/novelties__card2.60814a7b7724b6d5efdb.jpg",
     "static/media/payment__mainimg.jpg": "/thalia-react/static/media/payment__mainimg.c8fe4e3a4c4039e00e6f.jpg",
     "static/media/rafia.png": "/thalia-react/static/media/rafia.75795e4a55d734b35767.png",
     "static/media/handmade.png": "/thalia-react/static/media/handmade.00d9f4b0388654b75283.png",
@@ -39,11 +41,11 @@
     "static/media/icon_like.svg": "/thalia-react/static/media/icon_like.315b2dfa94c4f43d3475.svg",
     "static/media/header__vector.svg": "/thalia-react/static/media/header__vector.f11114ec15f870e6bd02552927b0583d.svg",
     "static/media/Polygon.svg": "/thalia-react/static/media/Polygon.583c644ee07d56a0ca160678355f5b60.svg",
-    "main.60d95e2c.css.map": "/thalia-react/static/css/main.60d95e2c.css.map",
-    "main.10eec2ef.js.map": "/thalia-react/static/js/main.10eec2ef.js.map"
+    "main.4f468187.css.map": "/thalia-react/static/css/main.4f468187.css.map",
+    "main.97f3233c.js.map": "/thalia-react/static/js/main.97f3233c.js.map"
   },
   "entrypoints": [
-    "static/css/main.60d95e2c.css",
-    "static/js/main.10eec2ef.js"
+    "static/css/main.4f468187.css",
+    "static/js/main.97f3233c.js"
   ]
 }
