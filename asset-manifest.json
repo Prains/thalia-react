@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/thalia-react/static/css/main.2357a06e.css",
-    "main.js": "/thalia-react/static/js/main.d9cb93d0.js",
+    "main.css": "/thalia-react/static/css/main.228fb09e.css",
+    "main.js": "/thalia-react/static/js/main.5c4ada21.js",
     "static/media/footer__logo.svg": "/thalia-react/static/media/footer__logo.4301695b7f0a1427966dd78289dfddb8.svg",
     "static/media/novelties__card1.jpg": "/thalia-react/static/media/novelties__card1.fab5aef5ee974bc9c674.jpg",
     "static/media/mainimg.png": "/thalia-react/static/media/mainimg.fc32fe6f5c7cb5cd99a0.png",
@@ -26,6 +26,7 @@
     "static/media/rope3.png": "/thalia-react/static/media/rope3.941572fdda541fd399bb.png",
     "static/media/contacts__wa.svg": "/thalia-react/static/media/contacts__wa.dd1be903bd94644117d8548ac5e7e505.svg",
     "static/media/image_whatsapp.svg": "/thalia-react/static/media/image_whatsapp.fc5f696ce7a6829e8e6f53dd97c4e7b1.svg",
+    "static/media/clew (2).jpg": "/thalia-react/static/media/clew (2).471c23e732ae0cced4ee.jpg",
     "static/media/contacts__tg.svg": "/thalia-react/static/media/contacts__tg.19c658048662b2f56683dd6944ed50e3.svg",
     "static/media/image_telegram.svg": "/thalia-react/static/media/image_telegram.aeb7f1f7e657cedf37c9651e042a4aab.svg",
     "static/media/contacts__ig.svg": "/thalia-react/static/media/contacts__ig.b5c1b5a86099b3e37cbb7ba848d2fa5e.svg",
@@ -46,11 +47,11 @@
     "static/media/header__vector.svg": "/thalia-react/static/media/header__vector.f11114ec15f870e6bd02552927b0583d.svg",
     "static/media/down.svg": "/thalia-react/static/media/down.b412cacc60e9fa72fea910aa22b7ac73.svg",
     "static/media/Polygon.svg": "/thalia-react/static/media/Polygon.583c644ee07d56a0ca160678355f5b60.svg",
-    "main.2357a06e.css.map": "/thalia-react/static/css/main.2357a06e.css.map",
-    "main.d9cb93d0.js.map": "/thalia-react/static/js/main.d9cb93d0.js.map"
+    "main.228fb09e.css.map": "/thalia-react/static/css/main.228fb09e.css.map",
+    "main.5c4ada21.js.map": "/thalia-react/static/js/main.5c4ada21.js.map"
   },
   "entrypoints": [
-    "static/css/main.2357a06e.css",
-    "static/js/main.d9cb93d0.js"
+    "static/css/main.228fb09e.css",
+    "static/js/main.5c4ada21.js"
   ]
 }
