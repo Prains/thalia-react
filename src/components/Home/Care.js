@@ -4,7 +4,7 @@ import jute1 from '../../images/materials__jute1.png'
 import rafia from '../../images/materials__rafia.png'
 import { useState } from 'react'
 import Popup from '../Popup'
-
+import { Link } from 'react-router-dom'
 const Care = () => {
 
     let title = 'Заголовок'
@@ -46,12 +46,12 @@ const Care = () => {
                     <img src={rafia} alt="" className="care__img" />
                 </div>
             </div>
-            <a
-                href="./pages/catalog.html"
+            <Link
+                to="/catalog"
                 className="mainbutton text pointer care__button"
             >
                 Перейти в каталог<img src={arrow} alt="arrowimg" />
-            </a>
+            </Link>
             {popupShown && <Popup popupShown={popupShown} setShown={setPopupShown} title={title} text={text} />}
         </section>
     );

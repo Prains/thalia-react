@@ -3,7 +3,7 @@ import rope2 from '../../images/rope2.png'
 import rafi from '../../images/rafi.png'
 import juta from '../../images/juta.png'
 import arrow from '../../images/arrow.svg'
-
+import { Link } from 'react-router-dom'
 
 
 const Catal = () => {
@@ -29,8 +29,8 @@ const Catal = () => {
             </div>
             <div className="catal__center">
                 <p className="catal__center__title title">Сумки, аксесуары и декор</p>
-                <a
-                    href="./pages/catalog.html"
+                <Link
+                    to="/catalog"
                     className="catal__center__text text pointer"
                 >
                     Перейти в каталог<img
@@ -38,7 +38,7 @@ const Catal = () => {
                         alt="arrowimg"
                         className=""
                     />
-                </a>
+                </Link>
             </div>
             <div className="catal__trow">
                 <p className="catal__trow__text text">

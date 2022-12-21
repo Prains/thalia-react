@@ -1,0 +1,22 @@
+.preloader-3 {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+  }
+  .preloader-3 .preloader-image {
+    animation: rotation 3s; 
+    animation-iteration-count: infinite;
+    overflow: hidden;
+  } /*# sourceMappingURL=preloader.css.map */
+  
+  @keyframes rotation {
+      from {
+          transform: rotate(0deg);
+      }
+      to {
+          transform: rotate(360deg);
+      }
+  }

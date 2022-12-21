@@ -12,7 +12,7 @@ import wa from '../images/image_whatsapp.svg'
 import '../css/header.scss'
 import '../css/burger.scss'
 import { useState } from 'react'
-import {Link} from 'react-router-dom'
+import { Link } from 'react-router-dom'
 const Header = () => {
 
 
@@ -33,13 +33,13 @@ const Header = () => {
                         <img src={polygon} alt="rectangle" className="polygon lazyload" />
                         {popupShown && <div className="catalog__popup">
                             <p className="catalog__popup__text text pointer">
-                                <Link to="/catalog">Все изделия</Link>
+                                <Link onClick={() => { setPopupShown(!popupShown) }} to="/catalog">Все изделия</Link>
                             </p>
                             <p className="catalog__popup__text text pointer">
-                                <Link to="/catalog">Сумки и аксессуары</Link>
+                                <Link onClick={() => { setPopupShown(!popupShown) }} to="/catalog">Сумки и аксессуары</Link>
                             </p>
                             <p className="catalog__popup__text text pointer">
-                                <Link to="/catalog">Функциональный декор</Link>
+                                <Link onClick={() => { setPopupShown(!popupShown) }} to="/catalog">Функциональный декор</Link>
                             </p>
                         </div>}
                     </div>
@@ -72,7 +72,7 @@ const Header = () => {
             </header>
             {burgerShown && <div className="burger">
                 <div className="burger__header">
-                    <Link to="/index">
+                    <Link to="/" onClick={() => { setBurger(!burgerShown) }}>
                         <img
                             src={burgerlogo}
                             alt="logoimg"
@@ -80,8 +80,12 @@ const Header = () => {
                         />
                     </Link>
                     <div className="burger__header__imges">
-                        <img src={like} alt="like" className="like pointer lazyload" />
-                        <img src={basket} alt="basket" className="basket pointer lazyload" />
+                        <Link to='/favourites' onClick={() => { setBurger(!burgerShown) }}>
+                            <img src={like} alt="like" className="like pointer lazyload" />
+                        </Link>
+                        <Link to='/cargo' onClick={() => { setBurger(!burgerShown) }}>
+                            <img src={basket} alt="basket" className="basket pointer lazyload" />
+                        </Link>
                         <img
                             src={burgervector}
                             alt="vector"
@@ -92,56 +96,58 @@ const Header = () => {
                 </div>
                 <div className="burger__content">
                     <div className="catalog">
-                        <p className="header__text text pointer burger__catalog__title">
+                        <p className="header__text text pointer burger__catalog__title" onClick={() => {
+                            setPopupShown(!popupShown)
+                        }}>
                             Каталог
                         </p>
                         <img src={polygon} alt="rectangle" className="polygon lazyload" />
                     </div>
-                    <div className="burger__content__catalog-popup">
+                    {popupShown && <div className="burger__content__catalog-popup">
                         <p className="burger__content__catalog-popup__text text pointer">
-                            <Link to="/catalog"> Сумки и аксессуары </Link>
+                            <Link to="/catalog" onClick={() => { setBurger(!burgerShown); setPopupShown(!popupShown) }}> Сумки и аксессуары </Link>
                         </p>
                         <p className="burger__content__catalog-popup__text text pointer">
-                            <Link to="/catalog"> Функциональный декор </Link>
+                            <Link to="/catalog" onClick={() => { setBurger(!burgerShown); setPopupShown(!popupShown) }}> Функциональный декор </Link>
                         </p>
-                    </div>
+                    </div>}
                     <p className="burger__content__text text pointer">
-                        <Link to="/novelties">Новинки</Link>
+                        <Link to="/novelties" onClick={() => { setBurger(!burgerShown); setPopupShown(!popupShown) }}>Новинки</Link>
                     </p>
                     <p className="burger__content__text text pointer">
-                        <Link to="/paymentndelivery">Оплата и доставка</Link>
+                        <Link to="/paymentndelivery" onClick={() => { setBurger(!burgerShown); setPopupShown(!popupShown) }}>Оплата и доставка</Link>
                     </p>
                     <p className="burger__content__text text pointer">
-                        <Link to="/contacts">Контакты</Link>
+                        <Link to="/contacts" onClick={() => { setBurger(!burgerShown); setPopupShown(!popupShown) }}>Контакты</Link>
                     </p>
                 </div>
                 <div className="burger__footer">
                     <p className="burger__footer__text text">7 916 142 14 53</p>
                     <div className="burger__footer__social">
-                        <Link to="/#"
+                        <a href="/#"
                         ><img
                                 src={tg}
                                 alt=""
                                 className="burger__footer__social__icon"
-                            /></Link>
-                        <Link to="https://vk.com/thaliastudio"
+                            /></a>
+                        <a href="https://vk.com/thaliastudio"
                         ><img
                                 src={vk}
                                 alt=""
                                 className="burger__footer__social__icon"
-                            /></Link>
-                        <Link to="/#"
+                            /></a>
+                        <a href="/#"
                         ><img
                                 src={ig}
                                 alt=""
                                 className="burger__footer__social__icon"
-                            /></Link>
-                        <Link to="/#"
+                            /></a>
+                        <a href="/#"
                         ><img
                                 src={wa}
                                 alt=""
                                 className="burger__footer__social__icon"
-                            /></Link>
+                            /></a>
                     </div>
                 </div>
             </div>}
