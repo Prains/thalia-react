@@ -10,6 +10,7 @@ import Order from './pages/Order';
 import Catalog from './pages/Catalog';
 import { useState, useEffect } from 'react'
 import CatalogCard from './pages/Catalog-card';
+import Preloader from './components/Preloader';
 
 function App() {
   let [temp, setTemp] = useState(null)
@@ -21,7 +22,9 @@ function App() {
       .then((data) => { setTemp(data) })
   }, [])
 
-  localStorage.setItem('liked', localStorage.getItem('liked') + 'null')
+  if (localStorage.getItem('liked') === null) {
+    localStorage.setItem('liked', 'null')
+  }
 
   return (
     <Router>
@@ -41,17 +44,21 @@ function App() {
             <Novelties />
           </Route>
           <Route path='/favourites'>
-            <Favourites />
+            {temp == null && <Preloader />}
+            {temp && <Favourites temp={temp} />}
           </Route>
           <Route path='/order'>
-            <Order />
+            {temp == null && <Preloader />}
+            {temp && <Order temp={temp} />}
           </Route>
           <Route path='/catalog'>
-            <Catalog temp={temp} />
+            {temp == null && <Preloader />}
+            {temp && <Catalog temp={temp} />}
           </Route>
           {temp && temp.map((item) => {
             return <Route path={`/card/${item.product_code}`} key={item.id}>
-              <CatalogCard temp={item} />
+              {temp == null && <Preloader />}
+              {temp && <CatalogCard temp={item} />}
             </Route>
           })
 
