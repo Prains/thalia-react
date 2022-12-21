@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/thalia-react/static/css/main.3c4d85f0.css",
-    "main.js": "/thalia-react/static/js/main.8c80fbfc.js",
+    "main.js": "/thalia-react/static/js/main.933a608b.js",
     "static/media/footer__logo.svg": "/thalia-react/static/media/footer__logo.4301695b7f0a1427966dd78289dfddb8.svg",
     "static/media/novelties__card1.jpg": "/thalia-react/static/media/novelties__card1.fab5aef5ee974bc9c674.jpg",
     "static/media/mainimg.png": "/thalia-react/static/media/mainimg.fc32fe6f5c7cb5cd99a0.png",
@@ -48,10 +48,10 @@
     "static/media/down.svg": "/thalia-react/static/media/down.b412cacc60e9fa72fea910aa22b7ac73.svg",
     "static/media/Polygon.svg": "/thalia-react/static/media/Polygon.583c644ee07d56a0ca160678355f5b60.svg",
     "main.3c4d85f0.css.map": "/thalia-react/static/css/main.3c4d85f0.css.map",
-    "main.8c80fbfc.js.map": "/thalia-react/static/js/main.8c80fbfc.js.map"
+    "main.933a608b.js.map": "/thalia-react/static/js/main.933a608b.js.map"
   },
   "entrypoints": [
     "static/css/main.3c4d85f0.css",
-    "static/js/main.8c80fbfc.js"
+    "static/js/main.933a608b.js"
   ]
 }
