@@ -1,9 +1,14 @@
 import { basket, trash } from '../../components/Icons/Icons'
+
 import './favourite.scss'
+
 import { useState } from 'react'
+
 import { removeItemOnLocal, makeNewCartArray, handleItemOnLocal } from '../../utils/cartFunctions'
+
 const Favourites = (props) => {
     let temp = props.temp
+
     let [founded, setFound] = useState(temp.filter(item =>
         localStorage.getItem('liked').indexOf(item.product_code) !== -1
     ))

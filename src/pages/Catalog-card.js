@@ -1,7 +1,11 @@
 import arrow from '../images/arrow.svg'
+
 import { Link } from 'react-router-dom'
+
 import { handleItemOnLocal } from '../utils/cartFunctions'
+
 const CatalogCard = (props) => {
+
     let temp = props.temp
 
     return (

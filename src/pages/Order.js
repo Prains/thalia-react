@@ -1,12 +1,17 @@
 import { arrow, trash } from '../components/Icons/Icons'
+
 import { useState } from 'react'
+
 import { removeItemOnLocal, makeNewCartArray } from '../utils/cartFunctions'
+
 const Order = (props) => {
+
     let temp = props.temp
+
     let [founded, setFound] = useState(temp.filter(item =>
         localStorage.getItem('ordered').indexOf(item.product_code) !== -1
     ))
-    
+
     function handleCartItemDelete(code, setRender, state, array) {
         removeItemOnLocal(code, setRender, state)
         setRender(makeNewCartArray(array, state, code))
@@ -33,7 +38,7 @@ const Order = (props) => {
                                 alt=""
                                 className="catalog-page__items__item__wrapper__like pointer"
                                 onClick={() => {
-                                   handleCartItemDelete(item.product_code, setFound, 'ordered', founded);
+                                    handleCartItemDelete(item.product_code, setFound, 'ordered', founded);
                                 }}
                             />
                         </div>

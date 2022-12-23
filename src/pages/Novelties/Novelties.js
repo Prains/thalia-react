@@ -1,7 +1,11 @@
 import { useState } from 'react';
+
 import './novelties.scss'
+
 import arrow from '../../images/arrow.svg'
+
 import { Link } from 'react-router-dom'
+
 const Novelties = () => {
     const novArray = [
         {
@@ -17,7 +21,9 @@ const Novelties = () => {
             price: "4200 р",
         },
     ];
+
     let [count, setCount] = useState(0)
+
     function handleCounts(count) {
         let temp = count
         if (temp === novArray.length - 1) {
@@ -28,6 +34,7 @@ const Novelties = () => {
             setCount(temp)
         }
     }
+
     return (
         <section className="novelties">
             <h2 className="novelties__title title">Новинки</h2>
