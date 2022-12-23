@@ -1,10 +1,10 @@
-import '../css/footer.scss'
-import footerlogo from '../images/footer__logo.svg'
+import './footer.scss'
+import footerlogo from '../../images/footer__logo.svg'
 import { Link } from 'react-router-dom'
-import wa from '../images/image_whatsapp.svg'
-import tg from '../images/image_telegram.svg'
-import vk from '../images/image_vk.svg'
-import ig from '../images/image_instagram.svg'
+import wa from '../../images/image_whatsapp.svg'
+import tg from '../../images/image_telegram.svg'
+import vk from '../../images/image_vk.svg'
+import ig from '../../images/image_instagram.svg'
 
 
 const Footer = () => {

@@ -1,8 +1,8 @@
-import '../../css/catal.scss'
-import rope2 from '../../images/rope2.png'
-import rafi from '../../images/rafi.png'
-import juta from '../../images/juta.png'
-import arrow from '../../images/arrow.svg'
+import './catal.scss'
+import rope2 from '../../../images/rope2.png'
+import rafi from '../../../images/rafi.png'
+import juta from '../../../images/juta.png'
+import arrow from '../../../images/arrow.svg'
 import { Link } from 'react-router-dom'
 
 

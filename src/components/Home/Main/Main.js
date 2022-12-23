@@ -1,6 +1,6 @@
-import claw from '../../images/mainimg.png'
-import arrow from '../../images/arrow.svg'
-import '../../css/main.scss'
+import claw from '../../../images/mainimg.png'
+import arrow from '../../../images/arrow.svg'
+import './main.scss'
 import { Link } from 'react-router-dom'
 const Main = (props) => {
     return (

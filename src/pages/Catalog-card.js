@@ -1,7 +1,15 @@
 import arrow from '../images/arrow.svg'
-
+import { Link } from 'react-router-dom'
 const CatalogCard = (props) => {
     let temp = props.temp
+    function orderHandler(code) {
+        if (localStorage.getItem('ordered') !== null) {
+            if (~localStorage.getItem('ordered').indexOf(code)) {
+                return
+            }
+        }
+        localStorage.setItem('ordered', localStorage.getItem('ordered') + code)
+    }
 
     return (
         <section className="novelties">
@@ -22,13 +30,15 @@ const CatalogCard = (props) => {
                             className="novelties__content__text-wrapper__bottom__text text"
                         >{temp.product_price} Р</p>
                     </div>
-                    <button
-                        type="button"
-                        name="button"
+                    <Link
+                        to='/order'
                         className="mainbutton text pointer novelties__content__text-wrapper__button"
+                        onClick={() => {
+                            orderHandler(temp.product_code)
+                        }}
                     >
                         Купить сейчас<img src={arrow} alt="arrowimg" />
-                    </button>
+                    </Link>
                 </div>
             </div>
         </section>

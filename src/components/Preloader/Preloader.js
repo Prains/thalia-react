@@ -1,5 +1,5 @@
-import '../css/Preloader.scss'
-import clew from '../images/clew (2).jpg'
+import './Preloader.scss'
+import clew from '../../images/clew (2).jpg'
 const Preloader = () => {
 
     return (

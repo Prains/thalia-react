@@ -1,9 +1,9 @@
-import '../../css/materials.scss'
-import just from '../../images/materials__just.png'
-import arrow from '../../images/arrow.svg'
-import jute from '../../images/materials__jute.png'
-import rafia1 from '../../images/materials__rafia1.png'
-import rafiaright from '../../images/materials__rafiaright.png'
+import './materials.scss'
+import just from '../../../images/materials__just.png'
+import arrow from '../../../images/arrow.svg'
+import jute from '../../../images/materials__jute.png'
+import rafia1 from '../../../images/materials__rafia1.png'
+import rafiaright from '../../../images/materials__rafiaright.png'
 
 import { useState } from 'react'
 const Materials = () => {

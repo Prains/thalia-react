@@ -1,5 +1,5 @@
-import '../css/payments.scss'
-import claw from '../images/payment__mainimg.jpg'
+import './payments.scss'
+import claw from '../../images/payment__mainimg.jpg'
 const Paymentndelivery = () => {
 
 
