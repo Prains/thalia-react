@@ -1,7 +1,7 @@
 import './css/App.scss';
 import Home from './pages/Home';
 import Paymentndelivery from './pages/Payments/Paymentndelivery';
-import { BrowserRouter as Router, Redirect, Route, Switch } from 'react-router-dom'
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import Header from './components/Header/Header';
 import Contacts from './pages/Contacts/Contacts';
 import Novelties from './pages/Novelties/Novelties';
@@ -11,7 +11,7 @@ import Catalog from './pages/Catalog/Catalog';
 import CatalogCard from './pages/Catalog-card';
 import Preloader from './components/Preloader/Preloader';
 import Footer from './components/Footer/Footer';
-import useFetch from './components/hooks/useFetch';
+import useFetch from './hooks/useFetch';
 
 
 function App() {

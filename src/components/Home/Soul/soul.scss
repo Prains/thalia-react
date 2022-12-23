@@ -1,36 +1,32 @@
+@use "../../../css/mixins.scss" as m;
+
 .soul {
   position: relative;
   margin-bottom: 150px;
 }
 
 .soul__section {
-  max-width: 880px;
-  width: 100%;
+  @include m.width(880px);
   margin: 0 auto;
 }
 
 .soul__subsection {
   margin: 0 auto;
-  display: flex;
-  justify-content: center;
+  @include m.flex(unset, center);
   gap: 110px;
 }
 
 .soul__title {
   margin: 0 auto;
+  @include m.font(70px, 78px, center);
   font-weight: 400;
-  font-size: 70px;
-  line-height: 78px;
-  text-align: center;
 }
 
 .soul__text {
   margin: 0 auto;
-  text-align: center;
   font-style: normal;
   font-weight: 400;
-  font-size: 16px;
-  line-height: 160%;
+  @include m.font(16px, 160%, center);
   margin-top: 70px;
   margin-bottom: 60px;
 }
@@ -42,6 +38,7 @@
   font-weight: 600;
   font-size: 30px;
   line-height: 130%;
+  @include m.font(30px, 130%);
   align-self: flex-end;
 }
 
@@ -49,8 +46,7 @@
   margin: 0;
   font-style: normal;
   font-weight: 600;
-  font-size: 30px;
-  line-height: 130%;
+  @include m.font(30px, 130%);
   width: 150px;
 }
 
@@ -61,21 +57,18 @@
 .undertext__text {
   font-style: normal;
   font-weight: 400;
-  font-size: 14px;
-  line-height: 160%;
+  @include m.font(14px, 160%);
   width: 190px;
 }
 
 .soul__imgrow {
-  display: flex;
-  justify-content: center;
+  @include m.flex(unset, center);
   gap: 190px;
 }
 
 .imgrow__text {
-  display: flex;
+  @include m.flex(unset, flex-end);
   flex-direction: column;
-  justify-content: flex-end;
   position: absolute;
   bottom: -67px;
   margin-left: 101px;
@@ -98,14 +91,12 @@
   }
 
   .soul__title {
-    font-size: 32px;
-    line-height: 36px;
+    @include m.font(32px, 36px);
     margin-bottom: 40px;
   }
 
   .soul__text {
-    font-size: 14px;
-    line-height: 160%;
+    @include m.font(14px, 160%);
     margin-bottom: 30px;
   }
 

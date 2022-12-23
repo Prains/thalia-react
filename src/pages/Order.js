@@ -1,19 +1,15 @@
-
-import down from '../images/down.svg'
-import add from '../images/add.svg'
 import { arrow, trash } from '../components/Icons/Icons'
 import { useState } from 'react'
-
+import { removeItemOnLocal, makeNewCartArray } from '../utils/cartFunctions'
 const Order = (props) => {
     let temp = props.temp
     let [founded, setFound] = useState(temp.filter(item =>
         localStorage.getItem('ordered').indexOf(item.product_code) !== -1
     ))
-    function deleteHandler(code) {
-        localStorage.setItem("ordered", localStorage.getItem("ordered").replace(code, ""))
-        setFound(founded.filter(item =>
-            localStorage.getItem('ordered').indexOf(item.product_code) !== -1
-        ))
+    
+    function handleCartItemDelete(code, setRender, state, array) {
+        removeItemOnLocal(code, setRender, state)
+        setRender(makeNewCartArray(array, state, code))
     }
 
     return (
@@ -37,7 +33,7 @@ const Order = (props) => {
                                 alt=""
                                 className="catalog-page__items__item__wrapper__like pointer"
                                 onClick={() => {
-                                    deleteHandler(item.product_code)
+                                   handleCartItemDelete(item.product_code, setFound, 'ordered', founded);
                                 }}
                             />
                         </div>
