@@ -1,13 +1,17 @@
-import basket from '../images/basket.svg'
-import trash from '../images/trash.svg'
-import '../css/favourite.scss'
-import '../css/catalog-page.scss'
+import { basket, trash } from '../../components/Icons/Icons'
+import './favourite.scss'
 import { useState } from 'react'
 const Favourites = (props) => {
     let temp = props.temp
     let [founded, setFound] = useState(temp.filter(item =>
         localStorage.getItem('liked').indexOf(item.product_code) !== -1
     ))
+    function deleteHandler(code) {
+        localStorage.setItem("liked", localStorage.getItem("liked").replace(code, ""))
+        setFound(founded.filter(item =>
+            localStorage.getItem('liked').indexOf(item.product_code) !== -1
+        ))
+    }
 
     return (
         <section className="favourite">
@@ -26,6 +30,9 @@ const Favourites = (props) => {
                                 src={trash}
                                 alt=""
                                 className="catalog-page__items__item__wrapper__like pointer"
+                                onClick={() => {
+                                    deleteHandler(item.product_code)
+                                }}
                             />
                             <p className="catalog-page__items__item__wrapper__price text">{item.price} Р</p>
                             <img
@@ -36,7 +43,7 @@ const Favourites = (props) => {
                         </div>
                     </div>
                 })}
-                {founded === null && <p className='favourite__nothing'>Пока ничего нет. Добавим пару сумочек?</p>}
+                {founded.length === 0 && <p className='favourite__nothing'>Пока ничего нет. Добавим пару сумочек?</p>}
             </div>
         </section >
     );

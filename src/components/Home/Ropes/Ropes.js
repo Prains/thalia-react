@@ -1,4 +1,4 @@
-import '../../css/ropes.scss'
+import './ropes.scss'
 
 const Ropes = (props) => {
     return (

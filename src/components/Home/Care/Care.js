@@ -1,10 +1,10 @@
-import '../../css/care.scss'
-import arrow from '../../images/arrow.svg'
-import jute1 from '../../images/materials__jute1.png'
-import rafia from '../../images/materials__rafia.png'
+import './care.scss'
+import jute1 from '../../../images/materials__jute1.png'
+import rafia from '../../../images/materials__rafia.png'
 import { useState } from 'react'
-import Popup from '../Popup'
+import Popup from '../../Popup/Popup'
 import { Link } from 'react-router-dom'
+import { arrow } from '../../Icons/Icons'
 const Care = () => {
 
     let title = 'Заголовок'

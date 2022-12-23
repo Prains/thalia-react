@@ -1,5 +1,5 @@
-import arrow from '../images/arrow.svg'
-import '../css/overlay.scss'
+import { arrow } from '../Icons/Icons'
+import './overlay.scss'
 
 const Popup = (props) => {
     return (

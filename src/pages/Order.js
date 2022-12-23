@@ -1,55 +1,55 @@
-import trash from '../images/trash.svg'
+
 import down from '../images/down.svg'
 import add from '../images/add.svg'
-import arrow from '../images/arrow.svg'
+import { arrow, trash } from '../components/Icons/Icons'
+import { useState } from 'react'
 
-
-const Order = () => {
-
-    let isAny = false
-
-
+const Order = (props) => {
+    let temp = props.temp
+    let [founded, setFound] = useState(temp.filter(item =>
+        localStorage.getItem('ordered').indexOf(item.product_code) !== -1
+    ))
+    function deleteHandler(code) {
+        localStorage.setItem("ordered", localStorage.getItem("ordered").replace(code, ""))
+        setFound(founded.filter(item =>
+            localStorage.getItem('ordered').indexOf(item.product_code) !== -1
+        ))
+    }
 
     return (
-        <section class="favourite">
-            <h2 class="favourite__title title">Корзина</h2>
-            <div class="favourite__items">
-                {isAny && <div class="catalog-page__items__item pointer">
-                    <img
-                        src="../images/juta.png"
-                        alt=""
-                        class="catalog-page__items__item__img"
-                    />
-                    <p class="catalog-page__items__item__text text"></p>
-                    <div class="catalog-page__items__item__wrapper">
-                        <p class="catalog-page__items__item__wrapper__price text"></p>
+        <section className="favourite">
+            <h2 className="favourite__title title">Корзина</h2>
+            <div className="favourite__items">
+                {founded.length > 0 && founded.map((item) => {
+                    return <div className="catalog-page__items__item pointer">
+                        <img
+                            src={item.yoast_head_json.og_image[0].url}
+                            alt={item.title.rendered}
+                            className="catalog-page__items__item__img"
+                        />
+                        <p className="catalog-page__items__item__text text">{item.title.rendered}</p>
+                        <div className="catalog-page__items__item__wrapper">
+                            <p className="catalog-page__items__item__wrapper__price text">{item.price} Р</p>
+                        </div>
+                        <div className="catalog-page__items__item__bottom">
+                            <img
+                                src={trash}
+                                alt=""
+                                className="catalog-page__items__item__wrapper__like pointer"
+                                onClick={() => {
+                                    deleteHandler(item.product_code)
+                                }}
+                            />
+                        </div>
                     </div>
-                    <div class="catalog-page__items__item__bottom">
-                        <img
-                            src={trash}
-                            alt=""
-                            class="catalog-page__items__item__wrapper__like pointer"
-                        />
-                        <img
-                            src={down}
-                            alt=""
-                            class="catalog-page__items__item__bottom__radius minus"
-                        />
-                        <p class="catalog-page__items__item__bottom__text text">1</p>
-                        <img
-                            src={add}
-                            alt=""
-                            class="catalog-page__items__item__bottom__radius plus"
-                        />
-                    </div>
-                </div>}
+                })}
             </div>
-            {isAny && <a href="/" class="favourite__button text">Оформить заказ<img
+            {founded.length > 0 && <a href="/" className="favourite__button text">Оформить заказ<img
                 src={arrow}
                 alt="arrowimg"
-                class=""
+                className=""
             /></a>}
-            {isAny === false && <p className='favourite__nothing'>Пока тут ничего.. Давайте что-нибудь закажем?</p>}
+            {founded.length === 0 && <p className='favourite__nothing'>Пока тут ничего.. Давайте что-нибудь закажем?</p>}
         </section>
     );
 }

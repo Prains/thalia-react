@@ -1,17 +1,17 @@
 import { useState } from 'react';
-import '../css/novelties.scss'
-import arrow from '../images/arrow.svg'
+import './novelties.scss'
+import arrow from '../../images/arrow.svg'
 import { Link } from 'react-router-dom'
 const Novelties = () => {
     const novArray = [
         {
-            img: require("../images/novelties__card1.jpg"),
+            img: require("../../images/novelties__card1.jpg"),
             title: "Кошелёк",
             text: "Кошелёк из натуральной кожи с ручной обвязкой. Ремешок можно использовать как брелок для ключей",
             price: "2000 р",
         },
         {
-            img: require("../images/novelties__card2.jpg"),
+            img: require("../../images/novelties__card2.jpg"),
             title: "Торба",
             text: "Торба из полиэфирного шнура с кожаными элементами. Клапан с магнитной кнопкой, кожаное дно, наружный карман. Подкладка по желанию",
             price: "4200 р",

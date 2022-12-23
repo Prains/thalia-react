@@ -1,8 +1,5 @@
-import '../css/contacts.scss'
-import tg from '../images/contacts__tg.svg'
-import vk from '../images/contacts_vk.svg'
-import ig from '../images/contacts__ig.svg'
-import wa from '../images/contacts__wa.svg'
+import './contacts.scss'
+import { waC, tgC, vkC, igC } from '../../components/Icons/Icons'
 
 const Contacts = () => {
     return (
@@ -14,7 +11,7 @@ const Contacts = () => {
             <div class="contacts__social">
                 <div class="contacts__social__element">
                     <img
-                        src={tg}
+                        src={tgC}
                         alt=""
                         class="contacts__social__element__img"
                     />
@@ -26,7 +23,7 @@ const Contacts = () => {
                 </div>
                 <div class="contacts__social__element">
                     <img
-                        src={vk}
+                        src={vkC}
                         alt=""
                         class="contacts__social__element__img"
                     />
@@ -39,7 +36,7 @@ const Contacts = () => {
                 </div>
                 <div class="contacts__social__element">
                     <img
-                        src={ig}
+                        src={igC}
                         alt=""
                         class="contacts__social__element__img"
                     />
@@ -51,7 +48,7 @@ const Contacts = () => {
                 </div>
                 <div class="contacts__social__element">
                     <img
-                        src={wa}
+                        src={waC}
                         alt=""
                         class="contacts__social__element__img"
                     />

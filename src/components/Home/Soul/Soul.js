@@ -1,8 +1,8 @@
-import '../../css/soul.scss'
-import ropeF from '../../images/rope1.png'
-import jute from '../../images/image_jute.png'
-import handmande from '../../images/handmade.png'
-import rafia from '../../images/rafia.png'
+import './soul.scss'
+import ropeF from '../../../images/rope1.png'
+import jute from '../../../images/image_jute.png'
+import handmande from '../../../images/handmade.png'
+import rafia from '../../../images/rafia.png'
 const Soul = () => {
     return (
         <section className="soul">
