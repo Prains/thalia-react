@@ -1,12 +1,16 @@
-import { arrow, trash } from '../components/Icons/Icons'
+import { arrow, trash } from '../../components/Icons/Icons'
 
 import { useState } from 'react'
 
-import { removeItemOnLocal, makeNewCartArray } from '../utils/cartFunctions'
+import { removeItemOnLocal, makeNewCartArray } from '../../utils/cartFunctions'
+
+import Form from './Form/Form'
 
 const Order = (props) => {
 
     let temp = props.temp
+
+    let [orderButtonIsClicked, setOrderButtonClicked] = useState(false);
 
     let [founded, setFound] = useState(temp.filter(item =>
         localStorage.getItem('ordered').indexOf(item.product_code) !== -1
@@ -22,7 +26,7 @@ const Order = (props) => {
             <h2 className="favourite__title title">Корзина</h2>
             <div className="favourite__items">
                 {founded.length > 0 && founded.map((item) => {
-                    return <div className="catalog-page__items__item pointer">
+                    return <div className="catalog-page__items__item pointer" key={item.id}>
                         <img
                             src={item.yoast_head_json.og_image[0].url}
                             alt={item.title.rendered}
@@ -45,12 +49,13 @@ const Order = (props) => {
                     </div>
                 })}
             </div>
-            {founded.length > 0 && <a href="/" className="favourite__button text">Оформить заказ<img
+            {founded.length > 0 && <p className="favourite__button text" onClick={() => setOrderButtonClicked(!orderButtonIsClicked)}>Оформить заказ<img
                 src={arrow}
                 alt="arrowimg"
                 className=""
-            /></a>}
+            /></p>}
             {founded.length === 0 && <p className='favourite__nothing'>Пока тут ничего.. Давайте что-нибудь закажем?</p>}
+            {orderButtonIsClicked && <Form title={'Оформление заказа'} setShown={setOrderButtonClicked} temp={temp} popupShown={orderButtonIsClicked} />}
         </section>
     );
 }
