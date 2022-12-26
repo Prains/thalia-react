@@ -6,6 +6,7 @@ import search from '../../images/search.svg'
 import { like, basket } from '../../components/Icons/Icons'
 import { Link } from 'react-router-dom'
 import { handleItemOnLocal } from '../../utils/cartFunctions'
+import { motion } from 'framer-motion'
 const Catalog = (props) => {
 
     let [isFilterShown, setFilter] = useState(false)
@@ -23,7 +24,7 @@ const Catalog = (props) => {
 
     return (
         <>
-            {temp && <section className="catalog-page">
+            {temp && <motion.section className="catalog-page" initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
                 <h2 className="catalog-page__title title">Каталог</h2>
                 <div className="catalog-page__filter">
                     <div className="catalog-page__filter__items">
@@ -313,7 +314,7 @@ const Catalog = (props) => {
                         </div>
                     })}
                 </div>
-            </section>}
+            </motion.section>}
         </>
     );
 }

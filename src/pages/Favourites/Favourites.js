@@ -6,6 +6,8 @@ import { useState } from 'react'
 
 import { removeItemOnLocal, makeNewCartArray, handleItemOnLocal } from '../../utils/cartFunctions'
 
+import { motion } from 'framer-motion'
+
 const Favourites = (props) => {
     let temp = props.temp
 
@@ -28,7 +30,7 @@ const Favourites = (props) => {
 
 
     return (
-        <section className="favourite">
+        <motion.section className="favourite" initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
             <h2 className="favourite__title title">Избранное</h2>
             <div className="favourite__items">
                 {founded && founded.map((item) => {
@@ -60,7 +62,7 @@ const Favourites = (props) => {
                 })}
                 {founded.length === 0 && <p className='favourite__nothing'>Пока ничего нет. Добавим пару сумочек?</p>}
             </div>
-        </section >
+        </motion.section >
     );
 }
 

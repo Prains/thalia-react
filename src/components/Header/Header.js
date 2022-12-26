@@ -22,7 +22,7 @@ const Header = () => {
                             setPopupShown(!popupShown)
                         }}>Каталог</p>
                         <img src={polygon} alt="rectangle" className="polygon lazyload" />
-                        {popupShown && <div className="catalog__popup">
+                        {popupShown && <motion.div className="catalog__popup" initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
                             <p className="catalog__popup__text text pointer">
                                 <Link onClick={() => { setPopupShown(!popupShown) }} to="/catalog">Все изделия</Link>
                             </p>
@@ -32,7 +32,7 @@ const Header = () => {
                             <p className="catalog__popup__text text pointer">
                                 <Link onClick={() => { setPopupShown(!popupShown) }} to="/catalog">Функциональный декор</Link>
                             </p>
-                        </div>}
+                        </motion.div>}
                     </div>
                     <p className="header__text text pointer">
                         <Link to="/novelties">Новинки</Link>
