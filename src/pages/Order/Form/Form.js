@@ -1,32 +1,31 @@
 import { arrow } from '../../../components/Icons/Icons'
-import emailjs from '@emailjs/browser';
-import { useRef, useState } from 'react'
+import { useRef } from 'react'
+import sendEmail from '../../../utils/sendEmail'
 import './Form.scss'
+import { useState } from 'react'
 const Form = (props) => {
-    const form = useRef();
     const [isPending, setPending] = useState(false);
     let [textpend, setText] = useState('Загружается');
-    const sendEmail = (e) => {
-        e.preventDefault();
-        setPending(true);
-        emailjs.sendForm('service_or27jwm', 'template_6d7rhww', form.current, 'oVC29m1gCFrYp9F5t')
-            .then((result) => {
-                console.log(result.text);
-                setText('Успешно!')
-            }, (error) => {
-                console.log(error.text);
-                setText('Ошибка. Попробуйте еще раз позже')
-            })
-            .finally(() => { setTimeout(() => { props.setShown(!props.popupShown); setPending(false) }, 1500) });
-    };
+    const form = useRef();
     let orderlist = [];
     let priceAmount = 0;
+    let popupShown = props.popupShown
+    let setShown = props.setShown
     props.temp.forEach(element => {
-        if (~localStorage.getItem('ordered').indexOf(element.product_code)) {
+        if (~localStorage.getItem('ordered').indexOf(element.acf.code)) {
             orderlist.push(element.title.rendered);
-            priceAmount = priceAmount + Number(element.product_price);
+            priceAmount = priceAmount + Number(element.acf.price);
         }
     });
+    let data = {
+        isPending,
+        setPending,
+        textpend,
+        setText,
+        popupShown,
+        form,
+        setShown
+    }
     return (
         <div className="overlay">
             <div className="overlay__block">
@@ -34,7 +33,10 @@ const Form = (props) => {
                     <h2 className="overlay__block__text__title title">
                         {props.title}
                     </h2>
-                    <form className='overlay__form' onSubmit={sendEmail} ref={form} >
+                    <form className='overlay__form' onSubmit={(e) => {
+                        e.preventDefault();
+                        sendEmail(data)
+                    }} ref={form} >
                         <input type="text" placeholder='Ваше имя' name="user_name" required minLength={2} />
                         <input type="email" placeholder='Ваша почта' name="user_email" required minLength={4} />
                         <input type="phone" placeholder='Ваш телефон' name="user_phone" required minLength={10} />

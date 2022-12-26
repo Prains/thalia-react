@@ -6,6 +6,8 @@ import arrow from '../../images/arrow.svg'
 
 import { Link } from 'react-router-dom'
 
+import { motion } from 'framer-motion';
+
 const Novelties = () => {
     const novArray = [
         {
@@ -36,7 +38,7 @@ const Novelties = () => {
     }
 
     return (
-        <section className="novelties">
+        <motion.section className="novelties" initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
             <h2 className="novelties__title title">Новинки</h2>
             <div className="novelties__content">
                 <img src={novArray[count].img} alt="" className="novelties__image" />
@@ -68,7 +70,7 @@ const Novelties = () => {
                     </Link>
                 </div>
             </div>
-        </section>
+        </motion.section>
     );
 }
 

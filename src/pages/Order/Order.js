@@ -6,6 +6,8 @@ import { removeItemOnLocal, makeNewCartArray } from '../../utils/cartFunctions'
 
 import Form from './Form/Form'
 
+import { motion } from 'framer-motion'
+
 const Order = (props) => {
 
     let temp = props.temp
@@ -13,7 +15,7 @@ const Order = (props) => {
     let [orderButtonIsClicked, setOrderButtonClicked] = useState(false);
 
     let [founded, setFound] = useState(temp.filter(item =>
-        localStorage.getItem('ordered').indexOf(item.product_code) !== -1
+        localStorage.getItem('ordered').indexOf(item.acf.code) !== -1
     ))
 
     function handleCartItemDelete(code, setRender, state, array) {
@@ -22,19 +24,19 @@ const Order = (props) => {
     }
 
     return (
-        <section className="favourite">
+        <motion.section className="favourite" initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
             <h2 className="favourite__title title">Корзина</h2>
             <div className="favourite__items">
                 {founded.length > 0 && founded.map((item) => {
                     return <div className="catalog-page__items__item pointer" key={item.id}>
                         <img
-                            src={item.yoast_head_json.og_image[0].url}
+                            src={item.acf.gallery}
                             alt={item.title.rendered}
                             className="catalog-page__items__item__img"
                         />
                         <p className="catalog-page__items__item__text text">{item.title.rendered}</p>
                         <div className="catalog-page__items__item__wrapper">
-                            <p className="catalog-page__items__item__wrapper__price text">{item.price} Р</p>
+                            <p className="catalog-page__items__item__wrapper__price text">{item.acf.price} Р</p>
                         </div>
                         <div className="catalog-page__items__item__bottom">
                             <img
@@ -42,7 +44,7 @@ const Order = (props) => {
                                 alt=""
                                 className="catalog-page__items__item__wrapper__like pointer"
                                 onClick={() => {
-                                    handleCartItemDelete(item.product_code, setFound, 'ordered', founded);
+                                    handleCartItemDelete(item.acf.code, setFound, 'ordered', founded);
                                 }}
                             />
                         </div>
@@ -56,7 +58,7 @@ const Order = (props) => {
             /></p>}
             {founded.length === 0 && <p className='favourite__nothing'>Пока тут ничего.. Давайте что-нибудь закажем?</p>}
             {orderButtonIsClicked && <Form title={'Оформление заказа'} setShown={setOrderButtonClicked} temp={temp} popupShown={orderButtonIsClicked} />}
-        </section>
+        </motion.section>
     );
 }
 

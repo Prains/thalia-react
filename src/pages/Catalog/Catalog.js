@@ -283,10 +283,10 @@ const Catalog = (props) => {
                 <div className="catalog-page__items">
                     {temp.map((item) => {
                         return <div className="catalog-page__items__item pointer" key={item.id} >
-                            <Link to={`/card/${item.product_code}`} >
+                            <Link to={`/card/${item.acf.code}`} >
                                 <img
-                                    src={item.yoast_head_json.og_image[0].url}
-                                    alt=""
+                                    src={item.acf.gallery.toString()}
+                                    alt={item.title.rendered}
                                     className="catalog-page__items__item__img"
                                 />
                             </Link>
@@ -295,18 +295,18 @@ const Catalog = (props) => {
                                 <img
                                     src={like}
                                     alt=""
-                                    className={~liked.indexOf(item.product_code) && `catalog-page__items__item__wrapper__like pointer liked`}
+                                    className={~liked.indexOf(item.acf.code) && `catalog-page__items__item__wrapper__like pointer liked`}
                                     onClick={() => {
-                                        handleItemOnLocal(item.product_code, setLike, 'liked')
+                                        handleItemOnLocal(item.acf.code, setLike, 'liked')
                                     }}
                                 />
-                                <p className="catalog-page__items__item__wrapper__price text">{item.price} Р</p>
+                                <p className="catalog-page__items__item__wrapper__price text">{item.acf.price} Р</p>
                                 <img
                                     src={basket}
                                     alt=""
-                                    className={~ordered.indexOf(item.product_code) && "catalog-page__items__item__wrapper__basket pointer ordered"}
+                                    className={~ordered.indexOf(item.acf.code) && "catalog-page__items__item__wrapper__basket pointer ordered"}
                                     onClick={() => {
-                                        handleItemOnLocal(item.product_code, setOrder, 'ordered')
+                                        handleItemOnLocal(item.acf.code, setOrder, 'ordered')
                                     }}
                                 />
                             </div>

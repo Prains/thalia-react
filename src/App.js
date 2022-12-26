@@ -13,9 +13,8 @@ import Preloader from './components/Preloader/Preloader';
 import Footer from './components/Footer/Footer';
 import useFetch from './hooks/useFetch';
 
-
 function App() {
-  let { data: temp } = useFetch('https://thaliastudio.ru/wp-json/wp/v2/product?per_page=100')
+  let { data: temp } = useFetch('https://thaliastudio.ru/wp-json/wp/v2/product/?per_page=100&acf_format=standard')
   let { data: maintemp } = useFetch('https://thaliastudio.ru/wp-json/wp/v2/pages/7')
 
   if (localStorage.getItem('liked') === null) {
@@ -55,9 +54,9 @@ function App() {
             {temp && <Catalog temp={temp} />}
           </Route>
           {temp && temp.map((item) => {
-            return <Route path={`/card/${item.product_code}`} key={item.id}>
+            return <Route path={`/card/${item.acf.code}`} key={item.id}>
               {temp == null && <Preloader />}
-              {temp && <CatalogCard temp={item} url={item.product_code} />}
+              {temp && <CatalogCard temp={item} url={item.acf.code} />}
             </Route>
           })
           }

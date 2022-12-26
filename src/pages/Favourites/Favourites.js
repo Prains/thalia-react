@@ -10,7 +10,7 @@ const Favourites = (props) => {
     let temp = props.temp
 
     let [founded, setFound] = useState(temp.filter(item =>
-        localStorage.getItem('liked').indexOf(item.product_code) !== -1
+        localStorage.getItem('liked').indexOf(item.acf.code) !== -1
     ))
 
     function handleCartItemDelete(code, setRender, state, array) {
@@ -21,7 +21,7 @@ const Favourites = (props) => {
     function handleCartItemOrder(code, setRender, state, array) {
         handleItemOnLocal(code, setRender, state)
         let temporaryArrayOfLiked = temp.filter(item =>
-            localStorage.getItem('liked').indexOf(item.product_code) !== -1
+            localStorage.getItem('liked').indexOf(item.acf.code) !== -1
         )
         setRender(temporaryArrayOfLiked)
     }
@@ -34,7 +34,7 @@ const Favourites = (props) => {
                 {founded && founded.map((item) => {
                     return <div className="catalog-page__items__item pointer" key={item.id}>
                         <img
-                            src={item.yoast_head_json.og_image[0].url}
+                            src={item.acf.gallery}
                             alt={item.title.rendered}
                             className="catalog-page__items__item__img"
                         />
@@ -45,15 +45,15 @@ const Favourites = (props) => {
                                 alt=""
                                 className="catalog-page__items__item__wrapper__like pointer"
                                 onClick={() => {
-                                    handleCartItemDelete(item.product_code, setFound, 'liked', founded)
+                                    handleCartItemDelete(item.acf.code, setFound, 'liked', founded)
                                 }}
                             />
-                            <p className="catalog-page__items__item__wrapper__price text">{item.price} Р</p>
+                            <p className="catalog-page__items__item__wrapper__price text">{item.acf.price} Р</p>
                             <img
                                 src={basket}
                                 alt=""
-                                className={`catalog-page__items__item__wrapper__basket pointer ${~localStorage.getItem('ordered').indexOf(item.product_code) ? 'ordered' : ''}`}
-                                onClick={() => handleCartItemOrder(item.product_code, setFound, 'ordered', founded)}
+                                className={`catalog-page__items__item__wrapper__basket pointer ${~localStorage.getItem('ordered').indexOf(item.acf.code) ? 'ordered' : ''}`}
+                                onClick={() => handleCartItemOrder(item.acf.code, setFound, 'ordered', founded)}
                             />
                         </div>
                     </div>

@@ -6,7 +6,7 @@ export function removeItemOnLocal(code, setState, state) {
 }
 
 export function makeNewCartArray(array, state) {
-    let tempArr = array.filter(item => localStorage.getItem(`${state}`).indexOf(item.product_code) !== -1)
+    let tempArr = array.filter(item => localStorage.getItem(`${state}`).indexOf(item.acf.code) !== -1)
 
     return tempArr
 }

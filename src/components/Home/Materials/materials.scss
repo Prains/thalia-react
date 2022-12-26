@@ -41,7 +41,7 @@
 }
 
 .material__popup {
-  @include m.width(262px);
+  @include m.flex();
   margin-bottom: 43px;
   background: linear-gradient(0deg, #d8f8e3, #d8f8e3);
   border-radius: 300px;
@@ -50,6 +50,8 @@
     font-weight: 400;
     @include m.font(14px, 160%, center);
     margin: 48px 18px;
+    padding-left: 25px;
+    padding-right: 25px;
   }
 }
 #rafia {

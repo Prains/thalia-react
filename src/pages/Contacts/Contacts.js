@@ -1,9 +1,11 @@
 import './contacts.scss'
 import { waC, tgC, vkC, igC } from '../../components/Icons/Icons'
 
+import { motion } from 'framer-motion';
+
 const Contacts = () => {
     return (
-        <section class="contacts">
+        <motion.section class="contacts" initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
             <h2 class="contacts__title title">Контакты</h2>
             <p class="contacts__subtitle text">
                 Для связи с нами напишите или позвоните любым удобным для Вас способом
@@ -64,7 +66,7 @@ const Contacts = () => {
                 Или свяжитесь с нами по номеру телефона
             </p>
             <p class="contacts__number">7 916 142 14 53</p>
-        </section>
+        </motion.section>
     );
 }
 
