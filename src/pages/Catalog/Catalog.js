@@ -5,7 +5,10 @@ import { useState } from 'react'
 import search from '../../images/search.svg'
 import { like, basket } from '../../components/Icons/Icons'
 import { Link } from 'react-router-dom'
+import { handleItemOnLocal } from '../../utils/cartFunctions'
+import { motion } from 'framer-motion'
 const Catalog = (props) => {
+
     let [isFilterShown, setFilter] = useState(false)
     let [isMobileShown, setMobile] = useState(false)
     let [temp, setTemp] = useState(props.temp)
@@ -13,29 +16,6 @@ const Catalog = (props) => {
     let [ordered, setOrder] = useState(localStorage.getItem('ordered'));
     let [filter, setFilterName] = useState('По возрастанию цены');
     let [type, setType] = useState('all')
-    function likeHandler(code) {
-        if (localStorage.getItem('liked') !== null) {
-            if (~localStorage.getItem('liked').indexOf(code)) {
-                localStorage.setItem("liked", localStorage.getItem("liked").replace(code, ""))
-                setLike(localStorage.getItem('liked'))
-                return
-            }
-        }
-        localStorage.setItem('liked', localStorage.getItem('liked') + code)
-        setLike(localStorage.getItem('liked'))
-    }
-
-    function orderHandler(code) {
-        if (localStorage.getItem('ordered') !== null) {
-            if (~localStorage.getItem('ordered').indexOf(code)) {
-                localStorage.setItem("ordered", localStorage.getItem("ordered").replace(code, ""))
-                setOrder(localStorage.getItem('ordered'))
-                return
-            }
-        }
-        localStorage.setItem('ordered', localStorage.getItem('ordered') + code)
-        setOrder(localStorage.getItem('ordered'))
-    }
 
     function handleChanges(value) {
         const tempArray = props.temp.filter(word => ~word.title.rendered.indexOf(value));
@@ -44,7 +24,7 @@ const Catalog = (props) => {
 
     return (
         <>
-            {temp && <section className="catalog-page">
+            {temp && <motion.section className="catalog-page" initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
                 <h2 className="catalog-page__title title">Каталог</h2>
                 <div className="catalog-page__filter">
                     <div className="catalog-page__filter__items">
@@ -304,10 +284,10 @@ const Catalog = (props) => {
                 <div className="catalog-page__items">
                     {temp.map((item) => {
                         return <div className="catalog-page__items__item pointer" key={item.id} >
-                            <Link to={`/card/${item.product_code}`} >
+                            <Link to={`/card/${item.acf.code}`} >
                                 <img
-                                    src={item.yoast_head_json.og_image[0].url}
-                                    alt=""
+                                    src={item.acf.gallery.toString()}
+                                    alt={item.title.rendered}
                                     className="catalog-page__items__item__img"
                                 />
                             </Link>
@@ -316,25 +296,25 @@ const Catalog = (props) => {
                                 <img
                                     src={like}
                                     alt=""
-                                    className={~liked.indexOf(item.product_code) && `catalog-page__items__item__wrapper__like pointer liked`}
+                                    className={~liked.indexOf(item.acf.code) && `catalog-page__items__item__wrapper__like pointer liked`}
                                     onClick={() => {
-                                        likeHandler(item.product_code)
+                                        handleItemOnLocal(item.acf.code, setLike, 'liked')
                                     }}
                                 />
-                                <p className="catalog-page__items__item__wrapper__price text">{item.price} Р</p>
+                                <p className="catalog-page__items__item__wrapper__price text">{item.acf.price} Р</p>
                                 <img
                                     src={basket}
                                     alt=""
-                                    className={~ordered.indexOf(item.product_code) && "catalog-page__items__item__wrapper__basket pointer ordered"}
+                                    className={~ordered.indexOf(item.acf.code) && "catalog-page__items__item__wrapper__basket pointer ordered"}
                                     onClick={() => {
-                                        orderHandler(item.product_code)
+                                        handleItemOnLocal(item.acf.code, setOrder, 'ordered')
                                     }}
                                 />
                             </div>
                         </div>
                     })}
                 </div>
-            </section>}
+            </motion.section>}
         </>
     );
 }

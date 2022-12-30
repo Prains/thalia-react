@@ -1,3 +1,5 @@
+@use "../../../css/mixins.scss" as m;
+
 .main {
   margin: 0 auto 150px auto;
   display: flex;
@@ -7,11 +9,9 @@
 
 .main__title {
   margin: 0 auto;
-  text-align: center;
   font-weight: 400;
-  font-size: 80px;
-  line-height: 89px;
-  max-width: 878px;
+  @include m.font(80px, 89px, center);
+  @include m.width(878px);
 }
 
 .mainimg {
@@ -19,22 +19,18 @@
 }
 
 .mainbutton {
-  display: flex;
-  max-width: 260px;
-  width: 100%;
+  @include m.flex();
+  @include m.width(260px);
+  @include m.font(18px, 25px);
   padding-top: 17px;
   padding-bottom: 18px;
   margin: 0 auto;
-  justify-content: center;
-  align-items: center;
   gap: 16px;
   background-color: #d8f8e3;
   border: none;
   border-radius: 100px;
   font-style: normal;
   font-weight: 400;
-  font-size: 18px;
-  line-height: 25px;
 }
 
 .mainbutton:hover {
@@ -51,9 +47,8 @@
   }
 
   .main__title {
-    font-size: 32px;
-    line-height: 36px;
-    width: 280px;
+    @include m.font(32px, 36px);
+    @include m.width(280px);
   }
 
   .mainimg {

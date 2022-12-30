@@ -1,71 +1,61 @@
+@use "../../css/mixins.scss" as m;
 .payment {
-    max-width: 880px;
-    margin: 30px auto 150px auto;
-    &__img {
-      max-width: 430px;
-      width: 100%;
-      max-height: 413px;
-    }
-    &__title {
-      font-weight: 400;
-      font-size: 70px;
-      line-height: 78px;
-      text-align: center;
-      margin: 0 0 70px 0;
-    }
-    &__top {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      &__text {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        gap: 70px;
-        &-wrapper {
-          max-width: 355px;
-          &__title {
-            margin: 0 auto 30px auto;
-            font-size: 30px;
-            line-height: 33px;
-          }
-          &__text {
-            margin: 0;
-            font-size: 16px;
-            line-height: 160%;
-            color: #282828;
-            margin-bottom: 70px;
-          }
+  max-width: 880px;
+  margin: 30px auto 150px auto;
+  &__img {
+    @include m.width(430px);
+    max-height: 413px;
+  }
+  &__title {
+    @include m.font(70px, 78px, center);
+    font-weight: 400;
+    margin: 0 0 70px 0;
+  }
+  &__top {
+    @include m.flex(center, space-between);
+    &__text {
+      @include m.flex();
+      flex-direction: column;
+      gap: 70px;
+      &-wrapper {
+        @include m.width(355px);
+        &__title {
+          margin: 0 auto 30px auto;
+          @include m.font(30px, 33px);
+        }
+        &__text {
+          margin: 0;
+          @include m.font(16px, 160%, unset, #282828);
+          margin-bottom: 70px;
         }
       }
     }
+  }
 }
-  
-  @media screen and (max-width: 767px) {
-    .payment {
-      width:  87.5%;
-      margin-bottom: 80px;  
-      &__img {
-        display: none;
-      }
-      &__title {
-        font-size: 34px;
-        line-height: 38px;
-        text-align: center;
-      }
-      &__top {
-        justify-content: center;
-        flex-direction: column;
-        &__text {
-          gap: unset; 
-          &-wrapper {
-            &__text {
-              margin-bottom: 35px;
-            }
+
+@media screen and (max-width: 767px) {
+  .payment {
+    width: 87.5%;
+    margin-bottom: 80px;
+    &__img {
+      display: none;
+    }
+    &__title {
+      font-size: 34px;
+      line-height: 38px;
+      @include m.font(34px, 38px, center);
+    }
+    &__top {
+      justify-content: center;
+      flex-direction: column;
+      &__text {
+        gap: unset;
+        &-wrapper {
+          &__text {
+            margin-bottom: 35px;
           }
         }
       }
     }
   }
-  
+}

@@ -1,26 +1,42 @@
 import { basket, trash } from '../../components/Icons/Icons'
+
 import './favourite.scss'
+
 import { useState } from 'react'
+
+import { removeItemOnLocal, makeNewCartArray, handleItemOnLocal } from '../../utils/cartFunctions'
+
+import { motion } from 'framer-motion'
+
 const Favourites = (props) => {
     let temp = props.temp
+
     let [founded, setFound] = useState(temp.filter(item =>
-        localStorage.getItem('liked').indexOf(item.product_code) !== -1
+        localStorage.getItem('liked').indexOf(item.acf.code) !== -1
     ))
-    function deleteHandler(code) {
-        localStorage.setItem("liked", localStorage.getItem("liked").replace(code, ""))
-        setFound(founded.filter(item =>
-            localStorage.getItem('liked').indexOf(item.product_code) !== -1
-        ))
+
+    function handleCartItemDelete(code, setRender, state, array) {
+        removeItemOnLocal(code, setRender, state)
+        setRender(makeNewCartArray(array, state, code))
     }
 
+    function handleCartItemOrder(code, setRender, state, array) {
+        handleItemOnLocal(code, setRender, state)
+        let temporaryArrayOfLiked = temp.filter(item =>
+            localStorage.getItem('liked').indexOf(item.acf.code) !== -1
+        )
+        setRender(temporaryArrayOfLiked)
+    }
+
+
     return (
-        <section className="favourite">
+        <motion.section className="favourite" initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
             <h2 className="favourite__title title">Избранное</h2>
             <div className="favourite__items">
                 {founded && founded.map((item) => {
                     return <div className="catalog-page__items__item pointer" key={item.id}>
                         <img
-                            src={item.yoast_head_json.og_image[0].url}
+                            src={item.acf.gallery}
                             alt={item.title.rendered}
                             className="catalog-page__items__item__img"
                         />
@@ -31,21 +47,22 @@ const Favourites = (props) => {
                                 alt=""
                                 className="catalog-page__items__item__wrapper__like pointer"
                                 onClick={() => {
-                                    deleteHandler(item.product_code)
+                                    handleCartItemDelete(item.acf.code, setFound, 'liked', founded)
                                 }}
                             />
-                            <p className="catalog-page__items__item__wrapper__price text">{item.price} Р</p>
+                            <p className="catalog-page__items__item__wrapper__price text">{item.acf.price} Р</p>
                             <img
                                 src={basket}
                                 alt=""
-                                className="catalog-page__items__item__wrapper__basket pointer"
+                                className={`catalog-page__items__item__wrapper__basket pointer ${~localStorage.getItem('ordered').indexOf(item.acf.code) ? 'ordered' : ''}`}
+                                onClick={() => handleCartItemOrder(item.acf.code, setFound, 'ordered', founded)}
                             />
                         </div>
                     </div>
                 })}
                 {founded.length === 0 && <p className='favourite__nothing'>Пока ничего нет. Добавим пару сумочек?</p>}
             </div>
-        </section >
+        </motion.section >
     );
 }
 

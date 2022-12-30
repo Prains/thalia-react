@@ -1,11 +1,15 @@
 import './payments.scss'
+
 import claw from '../../images/payment__mainimg.jpg'
+
+import {motion} from 'framer-motion'
+
 const Paymentndelivery = () => {
 
 
 
     return (
-        <main className="page">
+        <motion.main className="page" initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
             <section className="payment">
                 <h2 className="payment__title title">Оплата и доставка</h2>
                 <div className="payment__top">
@@ -55,7 +59,7 @@ const Paymentndelivery = () => {
                     Telegram или Instagram.
                 </p>
             </section>
-        </main>
+        </motion.main>
     );
 }
 

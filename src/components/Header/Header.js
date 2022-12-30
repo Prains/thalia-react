@@ -2,6 +2,8 @@ import { polygon, like, basket, mainlogo, headervector, tg, vk, ig, wa, burgerlo
 import './header.scss'
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
+import { motion } from 'framer-motion'
+
 
 const Header = () => {
 
@@ -12,7 +14,7 @@ const Header = () => {
         <>
             <header className="header">
                 <Link to="/" className="logoimg">
-                    <img src={mainlogo} alt="logoimg" className="logoimg pointer lazyload" />
+                    <motion.img src={mainlogo} alt="logoimg" className="logoimg pointer lazyload" initial={{ y: -100 }} animate={{ y: -2 }} />
                 </Link>
                 <div className="menu">
                     <div className="catalog">
@@ -20,7 +22,7 @@ const Header = () => {
                             setPopupShown(!popupShown)
                         }}>Каталог</p>
                         <img src={polygon} alt="rectangle" className="polygon lazyload" />
-                        {popupShown && <div className="catalog__popup">
+                        {popupShown && <motion.div className="catalog__popup" initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
                             <p className="catalog__popup__text text pointer">
                                 <Link onClick={() => { setPopupShown(!popupShown) }} to="/catalog">Все изделия</Link>
                             </p>
@@ -30,7 +32,7 @@ const Header = () => {
                             <p className="catalog__popup__text text pointer">
                                 <Link onClick={() => { setPopupShown(!popupShown) }} to="/catalog">Функциональный декор</Link>
                             </p>
-                        </div>}
+                        </motion.div>}
                     </div>
                     <p className="header__text text pointer">
                         <Link to="/novelties">Новинки</Link>
@@ -60,7 +62,7 @@ const Header = () => {
                 </div>
             </header>
             {
-                burgerShown && <div className="burger">
+                burgerShown && <motion.div className="burger" initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
                     <div className="burger__header">
                         <Link to="/" onClick={() => { setBurger(!burgerShown) }}>
                             <img
@@ -93,14 +95,14 @@ const Header = () => {
                             </p>
                             <img src={polygon} alt="rectangle" className="polygon lazyload" />
                         </div>
-                        {popupShown && <div className="burger__content__catalog-popup">
+                        {popupShown && <motion.div className="burger__content__catalog-popup" initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
                             <p className="burger__content__catalog-popup__text text pointer">
                                 <Link to="/catalog" onClick={() => { setBurger(!burgerShown); setPopupShown(!popupShown) }}> Сумки и аксессуары </Link>
                             </p>
                             <p className="burger__content__catalog-popup__text text pointer">
                                 <Link to="/catalog" onClick={() => { setBurger(!burgerShown); setPopupShown(!popupShown) }}> Функциональный декор </Link>
                             </p>
-                        </div>}
+                        </motion.div>}
                         <p className="burger__content__text text pointer">
                             <Link to="/novelties" onClick={() => { setBurger(!burgerShown); setPopupShown(!popupShown) }}>Новинки</Link>
                         </p>
@@ -140,7 +142,7 @@ const Header = () => {
                                 /></a>
                         </div>
                     </div>
-                </div>
+                </motion.div>
             }
         </>
     );

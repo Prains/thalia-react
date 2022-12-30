@@ -1,13 +1,15 @@
 {
   "name": "thalia-react",
   "version": "0.1.0",
-  "homepage": "https://prains.github.io/thalia-react",
+  "homepage": "https://main.thaliastudio.ru/",
   "private": true,
   "dependencies": {
+    "@emailjs/browser": "^3.10.0",
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
     "classnames": "^2.3.2",
+    "framer-motion": "^8.0.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^5.3.4",

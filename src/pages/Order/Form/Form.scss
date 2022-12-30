@@ -1,0 +1,40 @@
+@use "../../../css/mixins.scss";
+
+.overlay__form {
+  max-width: 75%;
+  margin: 0 auto;
+  @include mixins.flex();
+  flex-direction: column;
+  gap: 10px;
+  input {
+    height: 30px;
+    width: 100%;
+    text-align: center;
+  }
+  button {
+    width: 50%;
+    height: 30px;
+    background: transparent;
+    border: 1px solid black;
+    transition: all 0.3s ease-in-out;
+    &:hover {
+      background: black;
+      color: white;
+    }
+  }
+}
+.status {
+  background: transparent;
+  height: 30px;
+  border: 1px solid black;
+  width: 50%;
+  margin: 25px auto;
+  &_ok {
+    background: green;
+    color: white;
+  }
+  &_bad {
+    background: red;
+    color: white;
+  }
+}
