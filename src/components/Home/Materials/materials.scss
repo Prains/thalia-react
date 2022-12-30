@@ -1,39 +1,47 @@
 @use "../../../css/mixins.scss" as m;
+
 .materials {
   position: relative;
   max-width: 880px;
   margin: 0 auto 150px auto;
+
   &__title {
     font-weight: 400;
     @include m.font(70px, 78px, center);
     margin: 0 auto;
     margin-bottom: 78px;
   }
+
   &__elements {
     @include m.flex();
     gap: 58px;
+
     .material__element {
       max-height: 491px;
       @include m.width(280px);
       @include m.flex();
       flex-direction: column;
+      
       &__title {
         @include m.font(30px, 33px, center, #282828);
         font-style: normal;
         font-weight: 600;
         margin: 0 auto;
       }
+
       &__text {
         margin: 15px auto 0 auto;
       }
     }
   }
 }
+
 .material__elementimg {
   @include m.flex();
   flex-direction: column;
   gap: 80px;
 }
+
 .material__img {
   margin-bottom: 43px;
   max-width: 262px;
@@ -54,6 +62,7 @@
     padding-right: 25px;
   }
 }
+
 #rafia {
   margin: 92px 18px;
 }
@@ -62,19 +71,24 @@
   .rope3 {
     display: none;
   }
+
   .rope4 {
     display: none;
   }
+
   .materials {
     max-width: 280px;
     margin: 0 auto 80px auto;
+
     &__elements {
       flex-direction: column;
       gap: 40px;
     }
+
     .material__elementimg {
       display: none;
     }
+
     &__title {
       font-weight: 400;
       @include m.font(34px, 38px, center);

@@ -1,9 +1,6 @@
 import arrow from '../images/arrow.svg'
-
 import { Link } from 'react-router-dom'
-
-import { handleItemOnLocal } from '../utils/cartFunctions'
-
+import { handleItemOnStorage } from '../utils/cartFunctions'
 import { motion } from 'framer-motion'
 
 const CatalogCard = (props) => {
@@ -33,7 +30,7 @@ const CatalogCard = (props) => {
                         to='/order'
                         className="mainbutton text pointer novelties__content__text-wrapper__button"
                         onClick={() => {
-                            handleItemOnLocal(temp.acf.code, '', 'ordered')
+                            handleItemOnStorage(temp.acf.code, '', 'ordered')
                         }}
                     >
                         Купить сейчас<img src={arrow} alt="arrowimg" />

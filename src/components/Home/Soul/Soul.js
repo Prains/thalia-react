@@ -8,7 +8,6 @@ const Soul = () => {
         <section className="soul">
             <img src={ropeF} alt="rope" className="rope lazyload" />
             <div className="soul__section">
-                <h2 className="title soul__title">Для души и красоты</h2>
                 <p className="text soul__text">
                     Thalia Studio - это изделия из натуральных материалов таких, как
                     джут и рафия. Это красивые сумочки, созданные с душой и любовью к

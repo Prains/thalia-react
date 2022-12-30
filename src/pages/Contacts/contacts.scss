@@ -3,28 +3,34 @@
 .contacts {
   @include m.width(880px);
   margin: 30px auto 150px auto;
+
   &__number {
     @include m.font(24px, 33px, center, #282828);
     font-weight: 700;
     margin: 30px auto 0px auto;
   }
+
   &__title {
     @include m.font(70px, 78px, center, #282828);
     font-weight: 400;
     margin: 0 auto 70px auto;
   }
+
   &__subtitle {
     @include m.font(14px, 17px, center);
     margin: 0 auto 60px auto;
+
     &:nth-of-type(2) {
       margin-bottom: 0;
     }
+
   }
   &__social {
     margin: 0 auto 70px auto;
     @include m.flex();
     flex-wrap: wrap;
     gap: 26px;
+
     &__element {
       background: #d8f8e3;
       border-radius: 0px 0px 100px 100px;
@@ -33,14 +39,17 @@
       height: 200px;
       @include m.flex(center, start);
       flex-direction: column;
+
       &__text {
         margin-top: 10px;
       }
+
       &__img {
         margin-top: 15px;
         max-width: 100px;
         max-height: 100px;
       }
+
     }
   }
 }
@@ -49,25 +58,31 @@
   .contacts {
     width: 87.5%;
     margin-bottom: 80px;
+
     &__title {
       font-weight: 400;
       font-size: 34px;
       line-height: 38px;
     }
+
     &__social {
       gap: 20px;
+
       &__element {
         max-width: 130px;
         height: 130px;
+
         &__img {
           max-width: 50px;
           max-height: 50px;
         }
+
         &__text {
           font-size: 11px;
           line-height: 13px;
           letter-spacing: -0.02em;
         }
+        
       }
     }
   }
