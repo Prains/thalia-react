@@ -3,9 +3,7 @@ import rope2 from '../../../images/rope2.png'
 import arrow from '../../../images/arrow.svg'
 import { Link } from 'react-router-dom'
 
-
 const Catal = (props) => {
-
     const novelties = props.novelties
 
     return (
@@ -29,7 +27,7 @@ const Catal = (props) => {
                 </p>
             </div>
             <div className="catal__center">
-                <p className="catal__center__title title">Сумки, аксесуары и декор</p>
+                <p className="catal__center__title title">Сумки, аксессуары и декор</p>
                 <Link
                     to="/catalog"
                     className="catal__center__text text pointer"

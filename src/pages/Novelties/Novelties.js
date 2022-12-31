@@ -5,9 +5,7 @@ import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion';
 
 const Novelties = (props) => {
-
     const novelties = props.novelties
-    console.log(novelties)
     let [count, setCount] = useState(0)
 
     function handleCounts(count) {

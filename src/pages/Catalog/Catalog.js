@@ -11,15 +11,15 @@ const Catalog = (props) => {
 
     let [isFilterShown, setFilter] = useState(false)
     let [isMobileShown, setMobile] = useState(false)
-    let [temp, setTemp] = useState(props.temp)
+    let [temp, setCatalogItems] = useState(props.temp)
     let [liked, setLike] = useState(localStorage.getItem('liked'));
     let [ordered, setOrder] = useState(localStorage.getItem('ordered'));
     let [filter, setFilterName] = useState('По возрастанию цены');
     let [type, setType] = useState('all')
 
     function handleChanges(value) {
-        const catalogArray = props.temp.filter(word => ~word.title.rendered.indexOf(value));
-        setTemp(catalogArray)
+        const catalogItems = props.temp.filter(word => ~word.title.rendered.indexOf(value));
+        setCatalogItems(catalogItems)
     }
 
     return (
@@ -33,7 +33,7 @@ const Catalog = (props) => {
                             onClick={
                                 () => {
                                     setType('all')
-                                    setTemp(props.temp)
+                                    setCatalogItems(props.temp)
                                 }
                             }
                         >
@@ -48,7 +48,7 @@ const Catalog = (props) => {
                                         a.acf.type === '0'
                                     )
                                     setType('0')
-                                    setTemp(tempArray)
+                                    setCatalogItems(tempArray)
                                 }
                             }
                         >
@@ -62,7 +62,7 @@ const Catalog = (props) => {
                                         a.acf.type === '1'
                                     )
                                     setType('1')
-                                    setTemp(tempArray)
+                                    setCatalogItems(tempArray)
                                 }
                             }
                         >
@@ -171,7 +171,7 @@ const Catalog = (props) => {
                                         )
                                         setFilter(!isFilterShown)
                                         setType('all')
-                                        setTemp(tempArray)
+                                        setCatalogItems(tempArray)
                                     }
                                 }
                             >
@@ -186,7 +186,7 @@ const Catalog = (props) => {
                                         )
                                         setFilter(!isFilterShown)
                                         setType('0')
-                                        setTemp(tempArray)
+                                        setCatalogItems(tempArray)
                                     }
                                 }
                             >
@@ -200,7 +200,7 @@ const Catalog = (props) => {
                                         )
                                         setFilter(!isFilterShown)
                                         setType('1')
-                                        setTemp(tempArray)
+                                        setCatalogItems(tempArray)
                                     }
                                 }
                                 className="catalog-page__filter__mobile__firstrow-text text catalog-page__filter__items__decor"
@@ -221,7 +221,7 @@ const Catalog = (props) => {
 
                                     setFilter(!isFilterShown)
                                     setFilterName('По возрастанию цены')
-                    
+
                                 }}
                                 className="catalog-page__filter__mobile__secondrow__text text pointer catalog-page__filter__search__dropdown__popup__text"
                             >
@@ -265,7 +265,7 @@ const Catalog = (props) => {
 
                                     setFilter(!isFilterShown)
                                     setFilterName('Сперва старые')
-                                    
+
                                 }}
                             >
                                 Сперва старые
