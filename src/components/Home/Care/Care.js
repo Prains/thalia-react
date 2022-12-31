@@ -5,10 +5,15 @@ import { useState } from 'react'
 import Popup from '../../Popup/Popup'
 import { Link } from 'react-router-dom'
 import { arrow } from '../../Icons/Icons'
+
 const Care = () => {
 
-    let title = 'Заголовок'
-    let text = 'Текст'
+    let title = ''
+    let text = ''
+    const firstText = ''
+    const firstTitle = 'Уход за вещами из джута'
+    const secondTitle = 'Уход за вещами из рафии'
+    const secondText = '';
     let [popupShown, setPopupShown] = useState(false);
 
     return (
@@ -21,7 +26,7 @@ const Care = () => {
                         <p className="care__text title care__firstmargin">
                             Уход за вещами из джута
                         </p>
-                        <p className="catal__center__text text care__jute__link" onClick={() => { setPopupShown(!popupShown) }}>
+                        <p className="catal__center__text text care__jute__link" onClick={() => { title = firstTitle; text = firstText; setPopupShown(!popupShown) }}>
                             <img
                                 src={arrow}
                                 alt="arrowimg"
@@ -35,7 +40,7 @@ const Care = () => {
                         <p className="care__text care__margin title">
                             Уход за вещами из рафии
                         </p>
-                        <p className="catal__center__text text care__rafia__link" onClick={() => { setPopupShown(!popupShown) }}>
+                        <p className="catal__center__text text care__rafia__link" onClick={() => { title = secondTitle; text = secondText; setPopupShown(!popupShown); }}>
                             Узнать больше<img
                                 src={arrow}
                                 alt="arrowimg"

@@ -18,14 +18,14 @@ import { motion } from "framer-motion";
 
 const Home = (props) => {
 
-    let temp = props.maintemp
+
+    let novelties = props.novelties;
 
     return (
         <>
-            {temp && <motion.main className="page" initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
-                <Main title={temp.mainpage_mainsection_title} />
-                <Soul />
-                <Catal />
+            {novelties && <motion.main className="page" initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
+                <Main />
+                <Catal novelties={novelties} />
                 <Ropes src={rope1} class={'rope4'} />
                 <Ropes src={rope2} class={'rope3'} />
                 <Materials />

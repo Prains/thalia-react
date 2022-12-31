@@ -8,6 +8,7 @@
   width: 100%;
   height: 100%;
   z-index: 99;
+
   &__block {
     background-color: white;
     @include m.width(600px);
@@ -16,37 +17,47 @@
     display: flex;
     flex-direction: column;
     @include m.flex(unset, space-between);
+
     &__text {
       text-align: center;
       @include m.width(500px);
       margin: 50px auto;
+
       &__title {
         margin: 0 auto 49px auto;
         font-weight: 600;
         @include m.font(20px, 22px);
       }
+
       &__text {
         font-size: 14px;
         line-height: 160%;
       }
+
     }
     &__link {
       margin-bottom: 30px;
     }
+
   }
 }
 @media screen and (max-width: 767px) {
   .overlay {
+
     &__block {
       max-width: 80%;
       border-radius: 30px;
+
       &__text {
         max-width: 80%;
+
         &__title {
           font-weight: 400;
           margin-bottom: 30px;
         }
+
       }
+      
       &__link {
         margin-top: -45px;
       }

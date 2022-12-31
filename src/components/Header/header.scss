@@ -10,15 +10,18 @@
   @include m.flex(unset, space-between);
   flex-direction: column;
   background: #d8f8e3;
+
   &__header {
     @include m.flex(unset, space-between);
     width: 86%;
     margin: 0 auto;
+
     &__imges {
       margin-top: 17px;
       @include m.flex(center, unset);
       gap: 20px;
     }
+
   }
   &__content {
     @include m.flex();
@@ -28,16 +31,20 @@
     margin: 0 auto;
     @include m.font(16px, 22px, center, #282828);
     font-weight: 300;
+
     &__text {
       margin: 0;
     }
+
     &__catalog-popup {
       min-width: 200px;
       border-top: 1px solid rgba(0, 0, 0, 0.3);
       border-bottom: 1px solid rgba(0, 0, 0, 0.3);
+
       &__text {
         margin: 20px auto;
       }
+
     }
   }
   &__footer {
@@ -47,19 +54,23 @@
     gap: 15px;
     @include m.font(16px, 22px, unset, #282828);
     font-weight: 300;
+
     &__text {
       margin: 0;
     }
+
     &__social {
       @include m.flex();
       gap: 20px;
       object-fit: contain;
       flex-wrap: wrap;
+
       &__icon {
         margin: 0;
         width: 40px;
         height: 40px;
       }
+
     }
   }
 }
@@ -74,6 +85,7 @@
   margin: 0 auto;
   position: relative;
 }
+
 .header__burger {
   display: none;
 }

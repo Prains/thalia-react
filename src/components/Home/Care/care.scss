@@ -3,41 +3,51 @@
 .care {
   margin: 0 auto 150px auto;
   @include m.width(880px);
+
   &__title {
     margin: 0 auto 79px auto;
     @include m.font(70px, 78px, center, unset);
     font-weight: 400;
   }
+
   &__text {
     margin: 0;
     font-weight: 600;
     @include m.font(20px, 22px, center, unset);
   }
+
   &__margin {
     margin-top: 147px;
   }
+
   &__firstmargin {
     margin-top: 49px;
   }
+
   &__elements {
     @include m.flex(unset, space-between);
   }
+
   &__element {
     @include m.width(435px);
     height: 100%;
     display: flex;
     gap: 37px;
+
     &:last-of-type {
       margin-top: 60px;
     }
   }
+
   &__wrapper {
     @include m.flex(unset, center);
     flex-direction: column;
   }
+
   &__button {
     margin-top: 49px;
   }
+
   &__img {
     object-fit: cover;
     max-width: 195px;
@@ -49,30 +59,37 @@
   .care {
     @include m.width(280px);
     margin: 0 auto 80px auto;
+
     &__title {
       @include m.font(34px, 38px, center, unset);
       margin: 0 auto 46px auto;
     }
+
     &__text {
       font-weight: 600;
       @include m.font(15px, 16px, unset, unset);
     }
+
     &__elements {
       flex-direction: column;
       align-items: center;
       justify-content: center;
     }
+
     &__element {
       align-items: center;
       gap: 19px;
     }
+
     &__img {
       max-width: 122px;
       max-height: 167px;
     }
+
     &__margin {
       margin: 0;
     }
+    
     &__firstmargin {
       margin: 0;
     }

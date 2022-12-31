@@ -24,7 +24,7 @@ const Header = () => {
                         <img src={polygon} alt="rectangle" className="polygon lazyload" />
                         {popupShown && <motion.div className="catalog__popup" initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
                             <p className="catalog__popup__text text pointer">
-                                <Link onClick={() => { setPopupShown(!popupShown) }} to="/catalog">Все изделия</Link>
+                                <Link onClick={() => { setPopupShown(!popupShown) }} to="/catalog">Все товары</Link>
                             </p>
                             <p className="catalog__popup__text text pointer">
                                 <Link onClick={() => { setPopupShown(!popupShown) }} to="/catalog">Сумки и аксессуары</Link>

@@ -1,30 +1,31 @@
 import './catal.scss'
 import rope2 from '../../../images/rope2.png'
-import rafi from '../../../images/rafi.png'
-import juta from '../../../images/juta.png'
 import arrow from '../../../images/arrow.svg'
 import { Link } from 'react-router-dom'
 
 
-const Catal = () => {
+const Catal = (props) => {
+
+    const novelties = props.novelties
+
     return (
         <section className="catal">
             <img src={rope2} alt="ropeimg" className="rope2" />
             <h2 className="catal__title title">Каталог</h2>
             <div className="catal__frow">
                 <div className="catal_el">
-                    <img src={rafi} alt="cardimg" className="cardimg" />
-                    <p className="el__title text">Сумочка из джута</p>
-                    <p className="el__text text">8900 Р</p>
+                    <img src={novelties[0].acf.gallery} alt="cardimg" className="cardimg" />
+                    <p className="el__title text">{novelties[0].title.rendered}</p>
+                    <p className="el__text text">{novelties[0].acf.price} Р</p>
                 </div>
                 <div className="catal_el">
-                    <img src={juta} alt="cardimg" className="cardimg" />
-                    <p className="el__title text">Сумочка из рафии</p>
-                    <p className="el__text text">9300 р</p>
+                    <img src={novelties[1].acf.gallery} alt="cardimg" className="cardimg" />
+                    <p className="el__title text">{novelties[1].title.rendered}</p>
+                    <p className="el__text text">{novelties[1].acf.price} Р</p>
                 </div>
                 <p className="catal__text text">
-                    Изделия ручной работы дополняют повседневные образы и делают их
-                    уникальным и неповторимым.
+                    Вещи ручной работы дополняют повседневные образы и делают их
+                    уникальными, а ваш дом - неповторимым.
                 </p>
             </div>
             <div className="catal__center">
@@ -42,18 +43,17 @@ const Catal = () => {
             </div>
             <div className="catal__trow">
                 <p className="catal__trow__text text">
-                    Каждое изделие содержит в себе только лучшие натуральные материалы и
-                    частичку души.
+                    Каждая вещь содержит в себе только лучшие материалы и частичку души
                 </p>
                 <div className="catal_el zero">
-                    <img src={juta} alt="cardimg" className="cardimg" />
-                    <p className="el__title text">Сумочка из рафии</p>
-                    <p className="el__text text">9300 р</p>
+                    <img src={novelties[2].acf.gallery} alt="cardimg" className="cardimg" />
+                    <p className="el__title text">{novelties[2].title.rendered}</p>
+                    <p className="el__text text">{novelties[2].acf.price} Р</p>
                 </div>
                 <div className="catal_el">
-                    <img src={juta} alt="cardimg" className="cardimg" />
-                    <p className="el__title text">Сумочка из рафии</p>
-                    <p className="el__text text">9300 р</p>
+                    <img src={novelties[3].acf.gallery} alt="cardimg" className="cardimg" />
+                    <p className="el__title text"> {novelties[3].title.rendered} </p>
+                    <p className="el__text text"> {novelties[3].acf.price}  Р</p>
                 </div>
             </div>
         </section>

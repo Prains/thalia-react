@@ -1,11 +1,7 @@
 import { basket, trash } from '../../components/Icons/Icons'
-
 import './favourite.scss'
-
 import { useState } from 'react'
-
-import { removeItemOnLocal, makeNewCartArray, handleItemOnLocal } from '../../utils/cartFunctions'
-
+import { removeItemOnStorage, makeNewCartArray, handleItemOnStorage } from '../../utils/cartFunctions'
 import { motion } from 'framer-motion'
 
 const Favourites = (props) => {
@@ -16,15 +12,17 @@ const Favourites = (props) => {
     ))
 
     function handleCartItemDelete(code, setRender, state, array) {
-        removeItemOnLocal(code, setRender, state)
+        removeItemOnStorage(code, setRender, state)
         setRender(makeNewCartArray(array, state, code))
     }
 
     function handleCartItemOrder(code, setRender, state, array) {
-        handleItemOnLocal(code, setRender, state)
+        handleItemOnStorage(code, setRender, state)
+
         let temporaryArrayOfLiked = temp.filter(item =>
             localStorage.getItem('liked').indexOf(item.acf.code) !== -1
         )
+
         setRender(temporaryArrayOfLiked)
     }
 
