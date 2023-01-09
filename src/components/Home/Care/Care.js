@@ -8,13 +8,19 @@ import { arrow } from '../../Icons/Icons'
 
 const Care = () => {
 
-    let title = ''
-    let text = ''
+    let [contentTitle, setContentTitle] = useState('')
+    let [contentText, setContentText] = useState('')
     const juteText = ''
     const juteTitle = 'Уход за вещами из джута'
     const rafiaTitle = 'Уход за вещами из рафии'
     const rafiaText = '';
     let [popupShown, setPopupShown] = useState(false);
+
+    function setOverlayContent(title, text) {
+        setContentText(text);
+        setContentTitle(title);
+        setPopupShown(!popupShown)
+    }
 
     return (
         <section className="care">
@@ -27,9 +33,7 @@ const Care = () => {
                             Уход за вещами из джута
                         </p>
                         <p className="catal__center__text text care__jute__link" onClick={() => {
-                            title = juteTitle;
-                            text = juteText;
-                            setPopupShown(!popupShown)
+                            setOverlayContent(juteTitle, juteText)
                         }}>
                             <img
                                 src={arrow}
@@ -45,9 +49,7 @@ const Care = () => {
                             Уход за вещами из рафии
                         </p>
                         <p className="catal__center__text text care__rafia__link" onClick={() => {
-                            title = rafiaTitle;
-                            text = rafiaText;
-                            setPopupShown(!popupShown);
+                            setOverlayContent(rafiaTitle, rafiaText)
                         }}>
                             Узнать больше<img
                                 src={arrow}
@@ -65,7 +67,7 @@ const Care = () => {
             >
                 Перейти в каталог<img src={arrow} alt="arrowimg" />
             </Link>
-            {popupShown && <Popup popupShown={popupShown} setShown={setPopupShown} title={title} text={text} />}
+            {popupShown && <Popup popupShown={popupShown} setShown={setPopupShown} title={contentTitle} text={contentText} />}
         </section>
     );
 }

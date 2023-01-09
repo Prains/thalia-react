@@ -9,22 +9,85 @@ import { handleItemOnStorage } from '../../utils/cartFunctions'
 import { motion } from 'framer-motion'
 const Catalog = (props) => {
 
-    let [isFilterShown, setFilter] = useState(false)
+    let [isFilterShown, setFilterShown] = useState(false)
     let [isMobileShown, setMobile] = useState(false)
-    let [temp, setCatalogItems] = useState(props.temp)
-    let [liked, setLike] = useState(localStorage.getItem('liked'));
-    let [ordered, setOrder] = useState(localStorage.getItem('ordered'));
+    let [productList, setCatalogItems] = useState(props.productList)
+    let [liked, setLikedList] = useState(localStorage.getItem('liked'));
+    let [ordered, setOrdered] = useState(localStorage.getItem('ordered'));
     let [filter, setFilterName] = useState('По возрастанию цены');
     let [type, setType] = useState('all')
 
     function handleChanges(value) {
-        const catalogItems = props.temp.filter(word => ~word.title.rendered.indexOf(value));
+        const catalogItems = props.productList.filter(word => ~word.title.rendered.indexOf(value));
         setCatalogItems(catalogItems)
+    }
+
+    function handleFilterChanges(type) {
+        let itemsList = []
+        switch (type) {
+            case 'all':
+                setType(type);
+                setCatalogItems(props.productList);
+                break;
+            case '0':
+                itemsList = makeItemList(type);
+                console.log(itemsList)
+                setType('0');
+                setCatalogItems(itemsList);
+                break;
+            case '1':
+                itemsList = makeItemList(type);
+                setType(type);
+                setCatalogItems(itemsList);
+                break;
+            default:
+                break;
+        }
+    }
+
+    function changePriceFilter(type) {
+        let itemsList = [];
+        switch (type) {
+            default:
+                break;
+            case 'По возрастанию цены':
+                productList.sort((a, b) => {
+                    return b.acf.price - a.acf.price
+                })
+                setFilterName('По возрастанию цены')
+                break;
+            case 'По убыванию цены':
+                productList.sort((a, b) => {
+                    return a.acf.price - b.acf.price
+                })
+                setFilterName('По убыванию цены')
+                break;
+            case 'Сперва новые':
+                productList.sort((a, b) => {
+                    return a.id - b.id
+                })
+                setFilterName('Сперва новые')
+                break;
+            case 'Сперва старые':
+                productList.sort((a, b) => {
+                    return b.id - a.id
+                })
+                setFilterName('Сперва старые')
+                break;
+
+        }
+    }
+
+    function makeItemList(type) {
+        let array = []
+        return array = props.productList.filter(a =>
+            a.acf.type === type
+        );
     }
 
     return (
         <>
-            {temp && <motion.section className="catalog-page" initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
+            {productList && <motion.section className="catalog-page" initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
                 <h2 className="catalog-page__title title">Каталог</h2>
                 <div className="catalog-page__filter">
                     <div className="catalog-page__filter__items">
@@ -32,8 +95,7 @@ const Catalog = (props) => {
                             className={`catalog-page__filter__items__text catalog-page__filter__items__all text ${type === 'all' ? 'selected' : ''}`}
                             onClick={
                                 () => {
-                                    setType('all')
-                                    setCatalogItems(props.temp)
+                                    handleFilterChanges('all')
                                 }
                             }
                         >
@@ -44,11 +106,7 @@ const Catalog = (props) => {
                             className={`catalog-page__filter__items__text catalog-page__filter__items__all text ${type === '0' ? 'selected' : ''}`}
                             onClick={
                                 () => {
-                                    const tempArray = props.temp.filter(a =>
-                                        a.acf.type === '0'
-                                    )
-                                    setType('0')
-                                    setCatalogItems(tempArray)
+                                    handleFilterChanges('0')
                                 }
                             }
                         >
@@ -58,11 +116,7 @@ const Catalog = (props) => {
                             className={`catalog-page__filter__items__text catalog-page__filter__items__all text ${type === '1' ? 'selected' : ''}`}
                             onClick={
                                 () => {
-                                    const tempArray = props.temp.filter(a =>
-                                        a.acf.type === '1'
-                                    )
-                                    setType('1')
-                                    setCatalogItems(tempArray)
+                                    handleFilterChanges('1')
                                 }
                             }
                         >
@@ -82,7 +136,7 @@ const Catalog = (props) => {
                             <p
                                 className="catalog-page__filter__search__dropdown__text text pointer"
                                 onClick={() => {
-                                    setFilter(!isFilterShown)
+                                    setFilterShown(!isFilterShown)
                                 }}
                             >
                                 {filter}
@@ -96,10 +150,7 @@ const Catalog = (props) => {
                                 <p
                                     className="catalog-page__filter__search__dropdown__popup__text text pointer"
                                     onClick={() => {
-                                        temp.sort((a, b) => {
-                                            return b.acf.price - a.acf.price
-                                        })
-                                        setFilterName('По возрастанию цены')
+                                        changePriceFilter('По возрастанию цены');
                                     }}
                                 >
                                     По возрастанию цены
@@ -107,10 +158,7 @@ const Catalog = (props) => {
                                 <p
                                     className="catalog-page__filter__search__dropdown__popup__text text pointer"
                                     onClick={() => {
-                                        temp.sort((a, b) => {
-                                            return a.acf.price - b.acf.price
-                                        })
-                                        setFilterName('По убыванию цены')
+                                        changePriceFilter('По убыванию цены');
                                     }}
                                 >
                                     По убыванию цены
@@ -118,10 +166,7 @@ const Catalog = (props) => {
                                 <p
                                     className="catalog-page__filter__search__dropdown__popup__text text pointer"
                                     onClick={() => {
-                                        temp.sort((a, b) => {
-                                            return a.id - b.id
-                                        })
-                                        setFilterName('Сперва новые')
+                                        changePriceFilter('Сперва новые')
                                     }}
                                 >
                                     Сперва новые
@@ -129,10 +174,7 @@ const Catalog = (props) => {
                                 <p
                                     className="catalog-page__filter__search__dropdown__popup__text text pointer"
                                     onClick={() => {
-                                        temp.sort((a, b) => {
-                                            return b.id - a.id
-                                        })
-                                        setFilterName('Сперва старые')
+                                        changePriceFilter('Сперва старые')
                                     }}
                                 >
                                     Сперва старые
@@ -144,7 +186,7 @@ const Catalog = (props) => {
                 <div className="catalog-page__filter__mobile">
                     <div className="catalog-page__filter__mobile__filters__wrapper">
                         <p className="catalog-page__filter__mobile__filters text" onClick={() => {
-                            setFilter(!isFilterShown)
+                            setFilterShown(!isFilterShown)
                         }}>
                             Фильтры<img src={dropdown} alt="" />
                         </p>
@@ -166,12 +208,7 @@ const Catalog = (props) => {
                                 className="catalog-page__filter__mobile__firstrow-text text catalog-page__filter__items__all"
                                 onClick={
                                     () => {
-                                        const tempArray = props.temp.filter(a =>
-                                            a.product_type === 'all'
-                                        )
-                                        setFilter(!isFilterShown)
-                                        setType('all')
-                                        setCatalogItems(tempArray)
+                                        handleFilterChanges('all')
                                     }
                                 }
                             >
@@ -181,12 +218,7 @@ const Catalog = (props) => {
                                 className="catalog-page__filter__mobile__firstrow-text text catalog-page__filter__items__bags"
                                 onClick={
                                     () => {
-                                        const tempArray = props.temp.filter(a =>
-                                            a.product_type === '0'
-                                        )
-                                        setFilter(!isFilterShown)
-                                        setType('0')
-                                        setCatalogItems(tempArray)
+                                        handleFilterChanges('0')
                                     }
                                 }
                             >
@@ -195,12 +227,7 @@ const Catalog = (props) => {
                             <p
                                 onClick={
                                     () => {
-                                        const tempArray = props.temp.filter(a =>
-                                            a.product_type === '1'
-                                        )
-                                        setFilter(!isFilterShown)
-                                        setType('1')
-                                        setCatalogItems(tempArray)
+                                        handleFilterChanges('1')
                                     }
                                 }
                                 className="catalog-page__filter__mobile__firstrow-text text catalog-page__filter__items__decor"
@@ -214,14 +241,7 @@ const Catalog = (props) => {
                             </p>
                             <p
                                 onClick={() => {
-
-                                    temp.sort((a, b) => {
-                                        return b.acf.price - a.acf.price
-                                    })
-
-                                    setFilter(!isFilterShown)
-                                    setFilterName('По возрастанию цены')
-
+                                    changePriceFilter('По возрастанию цены')
                                 }}
                                 className="catalog-page__filter__mobile__secondrow__text text pointer catalog-page__filter__search__dropdown__popup__text"
                             >
@@ -229,14 +249,7 @@ const Catalog = (props) => {
                             </p>
                             <p
                                 onClick={() => {
-                                    temp.sort((a, b) => {
-                                        return a.acf.price - b.acf.price
-
-                                    })
-
-                                    setFilter(!isFilterShown)
-                                    setFilterName('По убыванию цены')
-
+                                    changePriceFilter('По убыванию цены')
                                 }}
                                 className="catalog-page__filter__mobile__secondrow__text text pointer catalog-page__filter__search__dropdown__popup__text"
                             >
@@ -244,13 +257,7 @@ const Catalog = (props) => {
                             </p>
                             <p
                                 onClick={() => {
-                                    temp.sort((a, b) => {
-                                        return a.id - b.id
-                                    })
-
-                                    setFilter(!isFilterShown)
-                                    setFilterName('Сперва новые')
-
+                                    changePriceFilter('Сперва новые')
                                 }}
                                 className="catalog-page__filter__mobile__secondrow__text text pointer catalog-page__filter__search__dropdown__popup__text"
                             >
@@ -259,13 +266,7 @@ const Catalog = (props) => {
                             <p
                                 className="catalog-page__filter__mobile__secondrow__text text pointer catalog-page__filter__search__dropdown__popup__text"
                                 onClick={() => {
-                                    temp.sort((a, b) => {
-                                        return b.id - a.id
-                                    })
-
-                                    setFilter(!isFilterShown)
-                                    setFilterName('Сперва старые')
-
+                                    changePriceFilter('Сперва старые')
                                 }}
                             >
                                 Сперва старые
@@ -291,7 +292,7 @@ const Catalog = (props) => {
                     </div>}
                 </div>
                 <div className="catalog-page__items">
-                    {temp.map((item) => {
+                    {productList.map((item) => {
                         return <div className="catalog-page__items__item pointer" key={item.id} >
                             <Link to={`/card/${item.acf.code}`} >
                                 <img
@@ -307,7 +308,7 @@ const Catalog = (props) => {
                                     alt=""
                                     className={~liked.indexOf(item.acf.code) && `catalog-page__items__item__wrapper__like pointer liked`}
                                     onClick={() => {
-                                        handleItemOnStorage(item.acf.code, setLike, 'liked')
+                                        handleItemOnStorage(item.acf.code, setLikedList, 'liked')
                                     }}
                                 />
                                 <p className="catalog-page__items__item__wrapper__price text">{item.acf.price} Р</p>
@@ -316,7 +317,7 @@ const Catalog = (props) => {
                                     alt=""
                                     className={~ordered.indexOf(item.acf.code) && "catalog-page__items__item__wrapper__basket pointer ordered"}
                                     onClick={() => {
-                                        handleItemOnStorage(item.acf.code, setOrder, 'ordered')
+                                        handleItemOnStorage(item.acf.code, setOrdered, 'ordered')
                                     }}
                                 />
                             </div>

@@ -15,7 +15,7 @@ import useFetch from './hooks/useFetch';
 
 function App() {
   let isLoading = false;
-  let { data: temp } = useFetch('https://thaliastudio.ru/wp-json/wp/v2/product/?per_page=100&acf_format=standard')
+  let { data: productList } = useFetch('https://thaliastudio.ru/wp-json/wp/v2/product/?per_page=100&acf_format=standard')
   let { data: novelties } = useFetch('https://thaliastudio.ru/wp-json/wp/v2/novelties?per_page=100&acf_format=standard')
 
   if (localStorage.getItem('liked') === null) {
@@ -25,7 +25,7 @@ function App() {
     localStorage.setItem('ordered', 'null')
   }
 
-  if (novelties !== null) isLoading = true
+  if (productList !== null) isLoading = true
 
   return (
     <Router>
@@ -45,20 +45,20 @@ function App() {
             <Novelties novelties={novelties} />
           </Route>
           <Route path='/favourites'>
-            <Favourites temp={temp} />
+            <Favourites productList={productList} />
           </Route>
           <Route path='/order'>
-            <Order temp={temp} />
+            <Order productList={productList} />
           </Route>
           <Route path='/catalog'>
-            <Catalog temp={temp} />
+            <Catalog productList={productList} />
           </Route>
-          {temp && temp.map((item) => {
+          {productList && productList.map((item) => {
             return <Route path={`/card/${item.acf.code}`} key={item.id}>
 
-              {temp == null && <Preloader />}
+              {productList == null && <Preloader />}
 
-              {temp && <CatalogCard temp={item} url={item.acf.code} />}
+              {productList && <CatalogCard productList={item} url={item.acf.code} />}
 
             </Route>
           })
