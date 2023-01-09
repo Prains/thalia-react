@@ -14,7 +14,7 @@ import Footer from './components/Footer/Footer';
 import useFetch from './hooks/useFetch';
 
 function App() {
-  let ready = false;
+  let isLoading = false;
   let { data: temp } = useFetch('https://thaliastudio.ru/wp-json/wp/v2/product/?per_page=100&acf_format=standard')
   let { data: novelties } = useFetch('https://thaliastudio.ru/wp-json/wp/v2/novelties?per_page=100&acf_format=standard')
 
@@ -25,12 +25,11 @@ function App() {
     localStorage.setItem('ordered', 'null')
   }
 
-  if (novelties !== null) ready = true
+  if (novelties !== null) isLoading = true
 
   return (
     <Router>
-      {ready === false && <Preloader />}
-      {ready && <div className="App">
+      {isLoading ? <div className="App">
         <Header />
         <Switch>
           <Route exact path='/'>
@@ -56,7 +55,7 @@ function App() {
           </Route>
           {temp && temp.map((item) => {
             return <Route path={`/card/${item.acf.code}`} key={item.id}>
-              
+
               {temp == null && <Preloader />}
 
               {temp && <CatalogCard temp={item} url={item.acf.code} />}
@@ -69,7 +68,7 @@ function App() {
           </Route>
         </Switch>
         <Footer />
-      </div>}
+      </div> : <Preloader />}
     </Router>
   );
 }

@@ -14,7 +14,7 @@ const Order = (props) => {
         localStorage.getItem('ordered').indexOf(item.acf.code) !== -1
     ))
 
-    function CartItemDelete(code, setRender, state, array) {
+    function cartItemDelete(code, setRender, state, array) {
         removeItemOnStorage(code, setRender, state)
         setRender(makeNewCartArray(array, state, code))
     }
@@ -23,7 +23,6 @@ const Order = (props) => {
         <motion.section className="favourite" initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
             <h2 className="favourite__title title">Корзина</h2>
             <div className="favourite__items">
-
                 {founded.length > 0 && founded.map((item) => {
                     return <div className="catalog-page__items__item pointer" key={item.id}>
                         <img
@@ -41,13 +40,12 @@ const Order = (props) => {
                                 alt=""
                                 className="catalog-page__items__item__wrapper__like pointer"
                                 onClick={() => {
-                                    CartItemDelete(item.acf.code, setFound, 'ordered', founded);
+                                    cartItemDelete(item.acf.code, setFound, 'ordered', founded);
                                 }}
                             />
                         </div>
                     </div>
                 })}
-
             </div>
             {founded.length > 0 && <p className="favourite__button text" onClick={() => setOrderButtonClicked(!orderButtonIsClicked)}>Оформить заказ<img
                 src={arrow}

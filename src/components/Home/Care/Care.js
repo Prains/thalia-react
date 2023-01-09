@@ -10,10 +10,10 @@ const Care = () => {
 
     let title = ''
     let text = ''
-    const firstText = ''
-    const firstTitle = 'Уход за вещами из джута'
-    const secondTitle = 'Уход за вещами из рафии'
-    const secondText = '';
+    const juteText = ''
+    const juteTitle = 'Уход за вещами из джута'
+    const rafiaTitle = 'Уход за вещами из рафии'
+    const rafiaText = '';
     let [popupShown, setPopupShown] = useState(false);
 
     return (
@@ -26,7 +26,11 @@ const Care = () => {
                         <p className="care__text title care__firstmargin">
                             Уход за вещами из джута
                         </p>
-                        <p className="catal__center__text text care__jute__link" onClick={() => { title = firstTitle; text = firstText; setPopupShown(!popupShown) }}>
+                        <p className="catal__center__text text care__jute__link" onClick={() => {
+                            title = juteTitle;
+                            text = juteText;
+                            setPopupShown(!popupShown)
+                        }}>
                             <img
                                 src={arrow}
                                 alt="arrowimg"
@@ -40,7 +44,11 @@ const Care = () => {
                         <p className="care__text care__margin title">
                             Уход за вещами из рафии
                         </p>
-                        <p className="catal__center__text text care__rafia__link" onClick={() => { title = secondTitle; text = secondText; setPopupShown(!popupShown); }}>
+                        <p className="catal__center__text text care__rafia__link" onClick={() => {
+                            title = rafiaTitle;
+                            text = rafiaText;
+                            setPopupShown(!popupShown);
+                        }}>
                             Узнать больше<img
                                 src={arrow}
                                 alt="arrowimg"
