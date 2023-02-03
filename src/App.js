@@ -12,11 +12,14 @@ import CatalogCard from './pages/Catalog-card';
 import Preloader from './components/Preloader/Preloader';
 import Footer from './components/Footer/Footer';
 import useFetch from './hooks/useFetch';
-
+import { useState } from 'react';
 function App() {
-  let isLoading = false;
+  let [isLoading, setLoading] = useState(false);
   let { data: productList } = useFetch('https://thaliastudio.ru/wp-json/wp/v2/product/?per_page=100&acf_format=standard')
   let { data: novelties } = useFetch('https://thaliastudio.ru/wp-json/wp/v2/novelties?per_page=100&acf_format=standard')
+  
+
+  Promise.all([productList, novelties]).finally(() => { setTimeout(() => { setLoading(true) }, 1000) })
 
   if (localStorage.getItem('liked') === null) {
     localStorage.setItem('liked', 'null')
@@ -24,8 +27,6 @@ function App() {
   if (localStorage.getItem('ordered') === null) {
     localStorage.setItem('ordered', 'null')
   }
-
-  if (productList !== null) isLoading = true
 
   return (
     <Router>

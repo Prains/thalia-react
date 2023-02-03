@@ -10,10 +10,10 @@ const Care = () => {
 
     let [contentTitle, setContentTitle] = useState('')
     let [contentText, setContentText] = useState('')
-    const juteText = ''
+    const juteText = '- сухая чистка (щетка, пылесос, липкий ролик) - мыльный раствор - деликатная стирка в стиральной машине(макс. 30°), если нет кожаной фурнитуры - не использовать сильный отжим  - естественная сушка на горизонтальной поверхности - отпаривание'
     const juteTitle = 'Уход за вещами из джута'
     const rafiaTitle = 'Уход за вещами из рафии'
-    const rafiaText = '';
+    const rafiaText = '- удаление локальных загрязнений мыльным раствором - деликатная ручная стирка (макс. 30°) - сильно не отжимать, не выкручивать - естественная сушка на горизонтальной поверхности - отпаривание';
     let [popupShown, setPopupShown] = useState(false);
 
     function setOverlayContent(title, text) {

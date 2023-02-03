@@ -5,7 +5,7 @@ import { motion } from 'framer-motion'
 
 const CatalogCard = (props) => {
 
-    let temp = props.temp
+    let productList = props.productList
 
     return (
         <motion.section className="novelties" initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
@@ -13,24 +13,24 @@ const CatalogCard = (props) => {
             <div className="novelties__content">
                 <div className="novelties__content__image-wrapper">
                     <div className="novelties__content__image-wrapper__top-image">
-                        <img src={temp.acf.gallery} alt="" className="novelties__image pointer" />
+                        <img src={productList.acf.gallery} alt="" className="novelties__image pointer" />
                     </div>
                     <div className="novelties__content__image-wrapper__botom-images">
                     </div>
                 </div>
                 <div className="novelties__content__text-wrapper">
-                    <h3 className="novelties__content__text-wrapper__title text">{temp.title.rendered}</h3>
-                    <p className="novelties__content__text-wrapper__text text">{temp.acf.desc}</p>
+                    <h3 className="novelties__content__text-wrapper__title text">{productList.title.rendered}</h3>
+                    <p className="novelties__content__text-wrapper__text text">{productList.acf.desc}</p>
                     <div className="novelties__content__text-wrapper__bottom">
                         <p
                             className="novelties__content__text-wrapper__bottom__text text"
-                        >{temp.acf.price} Р</p>
+                        >{productList.acf.price} Р</p>
                     </div>
                     <Link
                         to='/order'
                         className="mainbutton text pointer novelties__content__text-wrapper__button"
                         onClick={() => {
-                            handleItemOnStorage(temp.acf.code, '', 'ordered')
+                            handleItemOnStorage(productList.acf.code, '', 'ordered')
                         }}
                     >
                         Купить сейчас<img src={arrow} alt="arrowimg" />
