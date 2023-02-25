@@ -5,9 +5,9 @@ import { removeItemOnStorage, makeNewCartArray, handleItemOnStorage } from '../.
 import { motion } from 'framer-motion'
 
 const Favourites = (props) => {
-    let temp = props.temp
+    let productList = props.productList
 
-    let [founded, setFound] = useState(temp.filter(item =>
+    let [likedItems, setLikedItems] = useState(productList.filter(item =>
         localStorage.getItem('liked').indexOf(item.acf.code) !== -1
     ))
 
@@ -19,11 +19,11 @@ const Favourites = (props) => {
     function handleCartItemOrder(code, setRender, state, array) {
         handleItemOnStorage(code, setRender, state)
 
-        let temporaryArrayOfLiked = temp.filter(item =>
+        let likedListArray = productList.filter(item =>
             localStorage.getItem('liked').indexOf(item.acf.code) !== -1
         )
 
-        setRender(temporaryArrayOfLiked)
+        setRender(likedListArray)
     }
 
 
@@ -31,7 +31,7 @@ const Favourites = (props) => {
         <motion.section className="favourite" initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
             <h2 className="favourite__title title">Избранное</h2>
             <div className="favourite__items">
-                {founded && founded.map((item) => {
+                {likedItems && likedItems.map((item) => {
                     return <div className="catalog-page__items__item pointer" key={item.id}>
                         <img
                             src={item.acf.gallery}
@@ -45,7 +45,7 @@ const Favourites = (props) => {
                                 alt=""
                                 className="catalog-page__items__item__wrapper__like pointer"
                                 onClick={() => {
-                                    handleCartItemDelete(item.acf.code, setFound, 'liked', founded)
+                                    handleCartItemDelete(item.acf.code, setLikedItems, 'liked', likedItems)
                                 }}
                             />
                             <p className="catalog-page__items__item__wrapper__price text">{item.acf.price} Р</p>
@@ -53,12 +53,12 @@ const Favourites = (props) => {
                                 src={basket}
                                 alt=""
                                 className={`catalog-page__items__item__wrapper__basket pointer ${~localStorage.getItem('ordered').indexOf(item.acf.code) ? 'ordered' : ''}`}
-                                onClick={() => handleCartItemOrder(item.acf.code, setFound, 'ordered', founded)}
+                                onClick={() => handleCartItemOrder(item.acf.code, setLikedItems, 'ordered', likedItems)}
                             />
                         </div>
                     </div>
                 })}
-                {founded.length === 0 && <p className='favourite__nothing'>Пока ничего нет. Добавим пару сумочек?</p>}
+                {likedItems.length === 0 && <p className='favourite__nothing'>Пока ничего нет. Добавим пару сумочек?</p>}
             </div>
         </motion.section >
     );

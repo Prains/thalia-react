@@ -20,7 +20,7 @@ export function addItemToStorage(code, setState, state) {
 
 export function handleItemOnStorage(code, setState, state) {
     if (localStorage.getItem(`${state}`) !== null) {
-
+        
         if (~localStorage.getItem(`${state}`).indexOf(code)) {
 
             removeItemOnStorage(code, setState, state)

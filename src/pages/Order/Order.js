@@ -6,11 +6,11 @@ import { motion } from 'framer-motion'
 
 const Order = (props) => {
 
-    let temp = props.temp
+    let productList = props.productList
 
     let [orderButtonIsClicked, setOrderButtonClicked] = useState(false);
 
-    let [founded, setFound] = useState(temp.filter(item =>
+    let [orderList, setOrderList] = useState(productList.filter(item =>
         localStorage.getItem('ordered').indexOf(item.acf.code) !== -1
     ))
 
@@ -23,7 +23,7 @@ const Order = (props) => {
         <motion.section className="favourite" initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
             <h2 className="favourite__title title">Корзина</h2>
             <div className="favourite__items">
-                {founded.length > 0 && founded.map((item) => {
+                {orderList.length > 0 && orderList.map((item) => {
                     return <div className="catalog-page__items__item pointer" key={item.id}>
                         <img
                             src={item.acf.gallery}
@@ -40,20 +40,20 @@ const Order = (props) => {
                                 alt=""
                                 className="catalog-page__items__item__wrapper__like pointer"
                                 onClick={() => {
-                                    cartItemDelete(item.acf.code, setFound, 'ordered', founded);
+                                    cartItemDelete(item.acf.code, setOrderList, 'ordered', orderList);
                                 }}
                             />
                         </div>
                     </div>
                 })}
             </div>
-            {founded.length > 0 && <p className="favourite__button text" onClick={() => setOrderButtonClicked(!orderButtonIsClicked)}>Оформить заказ<img
+            {orderList.length > 0 && <p className="favourite__button text" onClick={() => setOrderButtonClicked(!orderButtonIsClicked)}>Оформить заказ<img
                 src={arrow}
                 alt="arrowimg"
                 className=""
             /></p>}
-            {founded.length === 0 && <p className='favourite__nothing'>Пока тут ничего.. Давайте что-нибудь закажем?</p>}
-            {orderButtonIsClicked && <Form title={'Оформление заказа'} setShown={setOrderButtonClicked} temp={temp} popupShown={orderButtonIsClicked} />}
+            {orderList.length === 0 && <p className='favourite__nothing'>Пока тут ничего.. Давайте что-нибудь закажем?</p>}
+            {orderButtonIsClicked && <Form title={'Оформление заказа'} setShown={setOrderButtonClicked} temp={productList} popupShown={orderButtonIsClicked} />}
         </motion.section>
     );
 }
