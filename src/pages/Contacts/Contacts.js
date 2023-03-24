@@ -1,73 +1,54 @@
-import './contacts.scss'
-import { waC, tgC, vkC, igC } from '../../components/Icons/Icons'
+import "./contacts.scss";
+import { waC, tgC, vkC, igC } from "../../components/Icons/Icons";
+import { motion } from "framer-motion";
 
-import { motion } from 'framer-motion';
+const Title = () => {
+  return <h2 className="contacts__title title">Контакты</h2>;
+};
+
+const Subtitle = ({ text }) => {
+  return <p className="contacts__subtitle text">{text}</p>;
+};
+
+const SocialElement = ({ imgSrc, href, text }) => {
+  return (
+    <div className="contacts__social__element">
+      <img src={imgSrc} alt="" className="contacts__social__element__img" />
+      <a
+        className="catal__center__text contacts__social__element__text text"
+        target="_blank"
+        rel="noreferrer"
+        href={href}
+      >
+        {text}
+      </a>
+    </div>
+  );
+};
 
 const Contacts = () => {
-    return (
-        <motion.section class="contacts" initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
-            <h2 class="contacts__title title">Контакты</h2>
-            <p class="contacts__subtitle text">
-                Для связи с нами напишите или позвоните любым удобным для Вас способом
-            </p>
-            <div class="contacts__social">
-                <div class="contacts__social__element">
-                    <img
-                        src={tgC}
-                        alt=""
-                        class="contacts__social__element__img"
-                    />
-                    <a
-                        class="catal__center__text contacts__social__element__text text"
-                        target="_blank"
-                        href="/#"
-                    >@thalia_crochetstudio</a>
-                </div>
-                <div class="contacts__social__element">
-                    <img
-                        src={vkC}
-                        alt=""
-                        class="contacts__social__element__img"
-                    />
-                    <a
-                        class="catal__center__text contacts__social__element__text text"
-                        href="https://vk.com/thaliastudio"
-                        target="_blank"
-                        rel="noreferrer"
-                    >Thalia Studio</a>
-                </div>
-                <div class="contacts__social__element">
-                    <img
-                        src={igC}
-                        alt=""
-                        class="contacts__social__element__img"
-                    />
-                    <a
-                        class="catal__center__text contacts__social__element__text text"
-                        target="_blank"
-                        href="/#"
-                    >@thalia_crochetstudio</a>
-                </div>
-                <div class="contacts__social__element">
-                    <img
-                        src={waC}
-                        alt=""
-                        class="contacts__social__element__img"
-                    />
-                    <a
-                        class="catal__center__text contacts__social__element__text text"
-                        target="_blank"
-                        href="/#"
-                    >Natalia Leskova
-                    </a>
-                </div>
-            </div>
-            <p class="contacts__subtitle">
-                Или свяжитесь с нами по номеру телефона
-            </p>
-            <p class="contacts__number">7 916 142 14 53</p>
-        </motion.section>
-    );
-}
+  return (
+    <motion.section
+      className="contacts"
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+    >
+      <Title />
+      <Subtitle text="Для связи с нами напишите или позвоните любым удобным для Вас способом" />
+      <div className="contacts__social">
+        <SocialElement imgSrc={tgC} href="/#" text="@thalia_crochetstudio" />
+        <SocialElement
+          imgSrc={vkC}
+          href="https://vk.com/thaliastudio"
+          text="Thalia Studio"
+        />
+        <SocialElement imgSrc={igC} href="/#" text="@thalia_crochetstudio" />
+        <SocialElement imgSrc={waC} href="/#" text="Natalia Leskova" />
+      </div>
+      <Subtitle text="Или свяжитесь с нами по номеру телефона" />
+      <p className="contacts__number">7 916 142 14 53</p>
+    </motion.section>
+  );
+};
 
 export default Contacts;

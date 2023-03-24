@@ -13,20 +13,23 @@ import Preloader from './components/Preloader/Preloader';
 import Footer from './components/Footer/Footer';
 import useFetch from './hooks/useFetch';
 import { useState } from 'react';
+
 function App() {
   let [isLoading, setLoading] = useState(false);
   let { data: productList } = useFetch('https://thaliastudio.ru/wp-json/wp/v2/product/?per_page=100&acf_format=standard')
   let { data: novelties } = useFetch('https://thaliastudio.ru/wp-json/wp/v2/novelties?per_page=100&acf_format=standard')
   
-
+  function checkLocalStorageItem(key, defaultValue) {
+    if (localStorage.getItem(key) === null) {
+      localStorage.setItem(key, defaultValue)
+    }
+  }
+  
   Promise.all([productList, novelties]).finally(() => { setTimeout(() => { setLoading(true) }, 1000) })
 
-  if (localStorage.getItem('liked') === null) {
-    localStorage.setItem('liked', 'null')
-  }
-  if (localStorage.getItem('ordered') === null) {
-    localStorage.setItem('ordered', 'null')
-  }
+  checkLocalStorageItem('liked', 'null');
+  checkLocalStorageItem('ordered', 'null');
+  
 
   return (
     <Router>
