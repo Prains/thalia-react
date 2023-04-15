@@ -36,14 +36,14 @@ const Contacts = () => {
       <Title />
       <Subtitle text="Для связи с нами напишите или позвоните любым удобным для Вас способом" />
       <div className="contacts__social">
-        <SocialElement imgSrc={tgC} href="/#" text="@thalia_crochetstudio" />
+        <SocialElement imgSrc={tgC} href="https://t.me/thalia_crochetstudio" text="@thalia_crochetstudio" />
         <SocialElement
           imgSrc={vkC}
           href="https://vk.com/thaliastudio"
           text="Thalia Studio"
         />
-        <SocialElement imgSrc={igC} href="/#" text="@thalia_crochetstudio" />
-        <SocialElement imgSrc={waC} href="/#" text="Natalia Leskova" />
+        <SocialElement imgSrc={igC} href="https://www.instagram.com/thalia_crochetstudio/" text="@thalia_crochetstudio" />
+        <SocialElement imgSrc={waC} href="https:/wa.me/+79161421453" text="Natalia Leskova" />
       </div>
       <Subtitle text="Или свяжитесь с нами по номеру телефона" />
       <p className="contacts__number">7 916 142 14 53</p>
