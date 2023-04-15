@@ -52,12 +52,10 @@
   margin-bottom: 30px;
 }
 .novelties__content__image-wrapper__botom-images {
-  width: 100%;
-  display: flex;
-  @include m.flex(center, space-evenly);
+  width: 90%;
+  @include m.flex(center, start);
   flex-wrap: wrap;
-  justify-content: space-evenly;
-  align-items: center;
+  gap: 10px;
 }
 .novelties__cards {
   max-width: 150px;
@@ -117,3 +115,8 @@
     gap: 1px;
   }
 } /*# sourceMappingURL=index.css.map */
+.novelties__bottomimage {
+  width: 75px;
+  height: 75px;
+  cursor: pointer;
+}

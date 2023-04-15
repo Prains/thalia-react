@@ -8,13 +8,19 @@ import { arrow } from '../../Icons/Icons'
 
 const Care = () => {
 
-    let title = ''
-    let text = ''
-    const juteText = ''
+    let [contentTitle, setContentTitle] = useState('')
+    let [contentText, setContentText] = useState('')
+    const juteText = '- сухая чистка (щетка, пылесос, липкий ролик) - мыльный раствор - деликатная стирка в стиральной машине(макс. 30°), если нет кожаной фурнитуры - не использовать сильный отжим  - естественная сушка на горизонтальной поверхности - отпаривание'
     const juteTitle = 'Уход за вещами из джута'
     const rafiaTitle = 'Уход за вещами из рафии'
-    const rafiaText = '';
+    const rafiaText = '- удаление локальных загрязнений мыльным раствором - деликатная ручная стирка (макс. 30°) - сильно не отжимать, не выкручивать - естественная сушка на горизонтальной поверхности - отпаривание';
     let [popupShown, setPopupShown] = useState(false);
+
+    function setOverlayContent(title, text) {
+        setContentText(text);
+        setContentTitle(title);
+        setPopupShown(!popupShown)
+    }
 
     return (
         <section className="care">
@@ -27,9 +33,7 @@ const Care = () => {
                             Уход за вещами из джута
                         </p>
                         <p className="catal__center__text text care__jute__link" onClick={() => {
-                            title = juteTitle;
-                            text = juteText;
-                            setPopupShown(!popupShown)
+                            setOverlayContent(juteTitle, juteText)
                         }}>
                             <img
                                 src={arrow}
@@ -45,9 +49,7 @@ const Care = () => {
                             Уход за вещами из рафии
                         </p>
                         <p className="catal__center__text text care__rafia__link" onClick={() => {
-                            title = rafiaTitle;
-                            text = rafiaText;
-                            setPopupShown(!popupShown);
+                            setOverlayContent(rafiaTitle, rafiaText)
                         }}>
                             Узнать больше<img
                                 src={arrow}
@@ -65,7 +67,7 @@ const Care = () => {
             >
                 Перейти в каталог<img src={arrow} alt="arrowimg" />
             </Link>
-            {popupShown && <Popup popupShown={popupShown} setShown={setPopupShown} title={title} text={text} />}
+            {popupShown && <Popup popupShown={popupShown} setShown={setPopupShown} title={contentTitle} text={contentText} />}
         </section>
     );
 }
